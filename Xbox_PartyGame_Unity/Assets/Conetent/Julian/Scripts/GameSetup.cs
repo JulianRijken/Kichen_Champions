@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Julian.InputSystem;
 
 public class GameSetup : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class GameSetup : MonoBehaviour
 
     }
 
-    private void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadScene(1);
     }

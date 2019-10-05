@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Julian.InputSystem;
 
 public class ConnectedControllerUI : MonoBehaviour
 {
-    [SerializeField] private int m_user;
 
+    [SerializeField] private int m_user;
 
     void Start()
     {
