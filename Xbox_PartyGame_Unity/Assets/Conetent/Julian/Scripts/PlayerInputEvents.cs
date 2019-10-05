@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputEvents : MonoBehaviour
 {
+
     public void FireMove(InputAction.CallbackContext context)
     {
         OnMove?.Invoke(context);
@@ -12,13 +13,14 @@ public class PlayerInputEvents : MonoBehaviour
     public delegate void MoveAction(InputAction.CallbackContext context);
     public event MoveAction OnMove;
 
+
     public void OnDeviceLost()
     {
-        GameManager.Instance.PlayerInputCenter.OnDeviceLost();
+        PlayerInputCenter.Instance.FireOnDeviceLost();
     }
 
     public void OnDeviceRegained()
     {
-        GameManager.Instance.PlayerInputCenter.OnDeviceRegained();
+        PlayerInputCenter.Instance.FireOnDeviceRegained();
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInputCenter : MonoBehaviour
 {
@@ -10,47 +11,86 @@ public class PlayerInputCenter : MonoBehaviour
 
     private Dictionary<int, PlayerInputEvents> m_playerInputEvents;
 
-    public Dictionary<int, PlayerInputEvents> PlayerInputEvents
+    public static PlayerInputCenter Instance { get; private set; }
+    public static Dictionary<int, PlayerInputEvents> PlayerInputEvents { get => Instance.m_playerInputEvents; }
+    public static int PlayerCount
     {
         get
         {
-            if (m_playerInputEvents == null)
-            {
-                m_playerInputEvents = new Dictionary<int, PlayerInputEvents>();
-            }
-
-            return m_playerInputEvents;
+            return Instance.m_playerInputEvents.Count;
         }
     }
-
+    
 
     private void Awake()
     {
-        m_playerInputEvents =  new Dictionary<int, PlayerInputEvents>();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance.gameObject);
+        }
+        else if (this != Instance)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
+    private void OnEnable()
+    {
+        ResetDevices();
+    }
+
+
+    public void ResetDevices()
+    {
+        Debug.Log("INPUT DEVICES REFRESHED");
+
+        if (m_playerInputEvents != null)
+        {
+            foreach (var player in m_playerInputEvents)
+            {
+                Destroy(player.Value.gameObject);
+            }
+        }
+
+        m_playerInputEvents = new Dictionary<int, PlayerInputEvents>();
         m_playerInputManager.playerPrefab = m_playerInputPrefab;
-        
+
+
         foreach (var device in InputDevice.all)
         {
             m_playerInputManager.JoinPlayer();
         }
+
+        OnDevicesReset?.Invoke();
+        Debug.Log("Devices Reset");
     }
-
-
-    public void OnPlayerJoined(PlayerInput joinedPlayer)
+    public delegate void DevicesResetAction();
+    public event DevicesResetAction OnDevicesReset;
+    public void OnControllerAdded(PlayerInput joinedPlayer)
     {
         joinedPlayer.transform.SetParent(this.transform);
         m_playerInputEvents.Add(joinedPlayer.user.index, joinedPlayer.GetComponent<PlayerInputEvents>());
     }
 
-    public void OnDeviceLost()
+
+
+    public void FireOnDeviceLost()
     {
+        OnDeviceLost?.Invoke();
         Debug.Log("DEVICE LOST RECCONECT DEVICE");
     }
+    public delegate void DeviceLostAction();
+    public event DeviceLostAction OnDeviceLost;
 
-    public void OnDeviceRegained()
+    public void FireOnDeviceRegained()
     {
+        OnDeviceRegained?.Invoke();
         Debug.Log("DEVICE RECCONECTED");
+
     }
+    public delegate void DeviceRegainedAction();
+    public event DeviceRegainedAction OnDeviceRegained;
+
 
 }

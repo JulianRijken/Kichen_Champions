@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeReference] private PlayerInputCenter m_playerInputCenter;
 
     private int m_connectedPlayersAtStart;
     private Dictionary<int, PlayerData> m_playerData;
@@ -35,7 +33,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public PlayerInputCenter PlayerInputCenter { get => m_playerInputCenter; }
 
 
     private void Awake()
@@ -50,7 +47,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
 
 
     public void AddPlayer(int user)

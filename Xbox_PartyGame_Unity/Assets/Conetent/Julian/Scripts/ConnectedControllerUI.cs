@@ -6,42 +6,33 @@ using UnityEngine.UI;
 
 public class ConnectedControllerUI : MonoBehaviour
 {
-    [SerializeField] private int playerId;
-
-    private PlayerInputEvents m_playerInputEvent;
-    private bool m_playerConnected;
+    [SerializeField] private int m_user;
 
 
     void Start()
     {
+        PlayerInputCenter.Instance.OnDevicesReset += UpdateStatus;
 
-        Dictionary<int,PlayerInputEvents> playerInputEvents = GameManager.Instance.PlayerInputCenter.PlayerInputEvents;
-        m_playerConnected = playerInputEvents.ContainsKey(playerId) ? true : false;
+        UpdateStatus();
+    }
 
-        if (m_playerConnected)
+    private void OnDestroy()
+    {
+        PlayerInputCenter.Instance.OnDevicesReset -= UpdateStatus;
+    }
+
+    private void UpdateStatus()
+    {
+        bool userConnected = PlayerInputCenter.PlayerInputEvents.ContainsKey(m_user);
+
+        if (userConnected)
         {
-            m_playerInputEvent = playerInputEvents[playerId];
-            m_playerInputEvent.OnMove += Move;
+            GetComponent<Image>().color = Color.blue;
         }
         else
         {
             GetComponent<Image>().color = Color.gray;
         }
-    }
-
-    private void OnDestroy()
-    {
-        if(m_playerConnected)
-            m_playerInputEvent.OnMove -= Move;
-    }
-
-
-    public void Move(InputAction.CallbackContext context)
-    {
-        if(context.ReadValue<Vector2>().magnitude > 0)
-            GetComponent<Image>().color = Color.green;
-        else
-            GetComponent<Image>().color = Color.black;
     }
 
 }
