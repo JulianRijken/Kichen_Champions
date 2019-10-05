@@ -12,14 +12,20 @@ namespace Julian.InputSystem
         [SerializeField] private GameObject m_playerInputPrefab;
 
         private Dictionary<int, PlayerInputEvents> m_playerInputEvents;
+        private int m_selectedPlayerCount;
 
         public static PlayerInputCenter Instance { get; private set; }
         public static Dictionary<int, PlayerInputEvents> PlayerInputEvents { get => Instance.m_playerInputEvents; }
-        public static int PlayerCount
+        public static int PlayerEventsCount { get => Instance.m_playerInputEvents.Count; }
+        public static int SelectedPlayerCount
         {
             get
             {
-                return Instance.m_playerInputEvents.Count;
+                return Instance.m_selectedPlayerCount;
+            }
+            set
+            {
+                Instance.m_selectedPlayerCount = value;
             }
         }
 
