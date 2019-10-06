@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -667,6 +667,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 667563337}
     m_Modifications:
+    - target: {fileID: 1683499403420077065, guid: 66c49e5a6f61d394483c610209e43b21,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerStartButton (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 1683499403420077071, guid: 66c49e5a6f61d394483c610209e43b21,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -716,11 +721,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1683499403420077065, guid: 66c49e5a6f61d394483c610209e43b21,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerStartButton (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1683499403420077064, guid: 66c49e5a6f61d394483c610209e43b21,
         type: 3}
@@ -1765,6 +1765,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 667563337}
     m_Modifications:
+    - target: {fileID: 1683499403420077065, guid: 66c49e5a6f61d394483c610209e43b21,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerStartButton (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 1683499403420077071, guid: 66c49e5a6f61d394483c610209e43b21,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1814,11 +1819,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1683499403420077065, guid: 66c49e5a6f61d394483c610209e43b21,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerStartButton (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1683499403420077064, guid: 66c49e5a6f61d394483c610209e43b21,
         type: 3}
@@ -1960,6 +1960,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 667563337}
     m_Modifications:
+    - target: {fileID: 1683499403420077065, guid: 66c49e5a6f61d394483c610209e43b21,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerStartButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1683499403420077071, guid: 66c49e5a6f61d394483c610209e43b21,
         type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
@@ -1975,11 +1980,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 967966925}
-    - target: {fileID: 1683499403420077065, guid: 66c49e5a6f61d394483c610209e43b21,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerStartButton
-      objectReference: {fileID: 0}
     - target: {fileID: 1683499403420077064, guid: 66c49e5a6f61d394483c610209e43b21,
         type: 3}
       propertyPath: m_LocalPosition.x
