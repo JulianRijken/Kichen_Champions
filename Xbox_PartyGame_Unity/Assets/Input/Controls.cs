@@ -26,7 +26,7 @@ public class Controls : IInputActionCollection
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Run"",
+                    ""name"": ""A"",
                     ""type"": ""Value"",
                     ""id"": ""51fd0895-4444-4b04-91c2-6685d238219b"",
                     ""expectedControlType"": ""Integer"",
@@ -53,7 +53,7 @@ public class Controls : IInputActionCollection
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Run"",
+                    ""action"": ""A"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -425,7 +425,7 @@ public class Controls : IInputActionCollection
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_A = m_Player.FindAction("A", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -489,13 +489,13 @@ public class Controls : IInputActionCollection
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_A;
     public struct PlayerActions
     {
         private Controls m_Wrapper;
         public PlayerActions(Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputAction @A => m_Wrapper.m_Player_A;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -508,9 +508,9 @@ public class Controls : IInputActionCollection
                 Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
-                Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
-                Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                A.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnA;
+                A.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnA;
+                A.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnA;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -518,9 +518,9 @@ public class Controls : IInputActionCollection
                 Move.started += instance.OnMove;
                 Move.performed += instance.OnMove;
                 Move.canceled += instance.OnMove;
-                Run.started += instance.OnRun;
-                Run.performed += instance.OnRun;
-                Run.canceled += instance.OnRun;
+                A.started += instance.OnA;
+                A.performed += instance.OnA;
+                A.canceled += instance.OnA;
             }
         }
     }
@@ -641,7 +641,7 @@ public class Controls : IInputActionCollection
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnRun(InputAction.CallbackContext context);
+        void OnA(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

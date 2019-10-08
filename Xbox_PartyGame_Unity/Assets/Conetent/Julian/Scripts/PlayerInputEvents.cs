@@ -15,6 +15,13 @@ namespace Julian.InputSystem
         public delegate void MoveAction(InputAction.CallbackContext context);
         public event MoveAction OnMove;
 
+        public void FireButtonSouth(InputAction.CallbackContext context)
+        {
+            OnButtonSouth?.Invoke(context);
+        }
+        public delegate void ButtonSouthAction(InputAction.CallbackContext context);
+        public event ButtonSouthAction OnButtonSouth;
+
 
         public void OnDeviceLost()
         {

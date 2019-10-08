@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Run",
+                    "name": "A",
                     "type": "Value",
                     "id": "51fd0895-4444-4b04-91c2-6685d238219b",
                     "expectedControlType": "Integer",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Run",
+                    "action": "A",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

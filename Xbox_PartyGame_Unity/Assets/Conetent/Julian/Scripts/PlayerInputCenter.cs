@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Julian.InputSystem
 {
@@ -78,8 +79,6 @@ namespace Julian.InputSystem
             joinedPlayer.transform.SetParent(this.transform);
             m_playerInputEvents.Add(joinedPlayer.user.index, joinedPlayer.GetComponent<PlayerInputEvents>());
         }
-
-
 
         public void FireOnDeviceLost()
         {
