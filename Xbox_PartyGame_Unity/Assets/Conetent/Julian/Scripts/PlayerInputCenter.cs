@@ -74,7 +74,7 @@ namespace Julian.InputSystem
         }
         public delegate void DevicesResetAction();
         public event DevicesResetAction OnDevicesReset;
-        public void OnControllerAdded(PlayerInput joinedPlayer)
+        public void OnConStrollerAdded(PlayerInput joinedPlayer)
         {
             joinedPlayer.transform.SetParent(this.transform);
             m_playerInputEvents.Add(joinedPlayer.user.index, joinedPlayer.GetComponent<PlayerInputEvents>());

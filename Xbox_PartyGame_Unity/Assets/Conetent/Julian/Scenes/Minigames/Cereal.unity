@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 206390679}
   - component: {fileID: 206390678}
   - component: {fileID: 206390680}
+  - component: {fileID: 206390681}
   m_Layer: 0
   m_Name: Bole
   m_TagString: Untagged
@@ -197,8 +198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206390677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -2.894, z: -1.9889826}
-  m_LocalScale: {x: 0.476, y: 0.326536, z: 0.476}
+  m_LocalPosition: {x: 0.036, y: -2.894, z: -1.9889826}
+  m_LocalScale: {x: 0.48647198, y: 0.326536, z: 0.476}
   m_Children: []
   m_Father: {fileID: 877459275}
   m_RootOrder: 1
@@ -240,6 +241,57 @@ PolygonCollider2D:
       - {x: 1.674164, y: -0.69631433}
       - {x: 2.4073274, y: 1.4122192}
       - {x: 2.6214972, y: 1.1946951}
+--- !u!50 &206390681
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206390677}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!1 &443414248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443414249}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &443414249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443414248}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.466, y: -0.37, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1983302083}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &631705800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,10 +406,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e28023cf717518498e1aa5e883c48e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CerealBox: {fileID: 0}
-  m_Bole: {fileID: 206390679}
-  m_player: 1
-  m_MovementInput: {x: 0, y: 0}
+  m_player: 0
+  m_cerealBox: {fileID: 0}
+  m_cerealSpawnPoint: {fileID: 443414249}
+  m_cerealPrefab: {fileID: 1710437949369934164, guid: 15dd3e992e399714db246d681515e049,
+    type: 3}
+  m_bole: {fileID: 206390681}
+  m_swayScale: 2
+  m_swaySpeed: 4
+  m_noiseSwayScale: 5
+  m_noiseSwaySpeed: 1
 --- !u!1 &1126691550
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,9 +644,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983302081}
   m_LocalRotation: {x: -0.0007115656, y: -0.007085175, z: 0.099925, w: 0.9949695}
-  m_LocalPosition: {x: 3.085, y: 2.429, z: -0.002}
+  m_LocalPosition: {x: 2.9, y: 2.74, z: -0}
   m_LocalScale: {x: 3.3044746, y: 1.9720001, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 443414249}
   m_Father: {fileID: 877459275}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0.81600004, z: 11.47}
