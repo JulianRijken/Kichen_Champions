@@ -52,7 +52,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6814625461361619223}
-        m_MethodName: OnPlayerJoined
+        m_MethodName: OnControllerAdded
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

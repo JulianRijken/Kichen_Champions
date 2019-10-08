@@ -13,6 +13,8 @@ public class PlayerCereal : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(PlayerInputCenter.PlayerInputEvents.Count);
+        Debug.Log(m_player);
         PlayerInputCenter.PlayerInputEvents[m_player].OnMove += HandeMovement;
         
     }
