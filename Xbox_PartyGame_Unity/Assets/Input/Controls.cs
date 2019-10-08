@@ -26,10 +26,34 @@ public class Controls : IInputActionCollection
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""A"",
-                    ""type"": ""Value"",
+                    ""name"": ""Button South"",
+                    ""type"": ""Button"",
                     ""id"": ""51fd0895-4444-4b04-91c2-6685d238219b"",
-                    ""expectedControlType"": ""Integer"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Button East"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff6be3df-cb2a-466e-8b33-b317ade0c37b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Button North"",
+                    ""type"": ""Button"",
+                    ""id"": ""f25420f2-ab25-4556-8dfb-25b9ca12b1da"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Button West"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bad13df-9b35-4541-84f1-92a18a02d9e1"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -53,7 +77,40 @@ public class Controls : IInputActionCollection
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""A"",
+                    ""action"": ""Button South"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""501d28c3-0fb7-4ef9-b2c7-6ba36995da0b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button East"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb3cb92d-76c0-4b94-a073-11d739b2612a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button North"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80a6cfa0-87cf-4f8d-963c-4edba2a70431"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button West"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -425,7 +482,10 @@ public class Controls : IInputActionCollection
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_A = m_Player.FindAction("A", throwIfNotFound: true);
+        m_Player_ButtonSouth = m_Player.FindAction("Button South", throwIfNotFound: true);
+        m_Player_ButtonEast = m_Player.FindAction("Button East", throwIfNotFound: true);
+        m_Player_ButtonNorth = m_Player.FindAction("Button North", throwIfNotFound: true);
+        m_Player_ButtonWest = m_Player.FindAction("Button West", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -489,13 +549,19 @@ public class Controls : IInputActionCollection
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_A;
+    private readonly InputAction m_Player_ButtonSouth;
+    private readonly InputAction m_Player_ButtonEast;
+    private readonly InputAction m_Player_ButtonNorth;
+    private readonly InputAction m_Player_ButtonWest;
     public struct PlayerActions
     {
         private Controls m_Wrapper;
         public PlayerActions(Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @A => m_Wrapper.m_Player_A;
+        public InputAction @ButtonSouth => m_Wrapper.m_Player_ButtonSouth;
+        public InputAction @ButtonEast => m_Wrapper.m_Player_ButtonEast;
+        public InputAction @ButtonNorth => m_Wrapper.m_Player_ButtonNorth;
+        public InputAction @ButtonWest => m_Wrapper.m_Player_ButtonWest;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -508,9 +574,18 @@ public class Controls : IInputActionCollection
                 Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                A.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnA;
-                A.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnA;
-                A.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnA;
+                ButtonSouth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonSouth;
+                ButtonSouth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonSouth;
+                ButtonSouth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonSouth;
+                ButtonEast.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonEast;
+                ButtonEast.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonEast;
+                ButtonEast.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonEast;
+                ButtonNorth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonNorth;
+                ButtonNorth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonNorth;
+                ButtonNorth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonNorth;
+                ButtonWest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonWest;
+                ButtonWest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonWest;
+                ButtonWest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonWest;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -518,9 +593,18 @@ public class Controls : IInputActionCollection
                 Move.started += instance.OnMove;
                 Move.performed += instance.OnMove;
                 Move.canceled += instance.OnMove;
-                A.started += instance.OnA;
-                A.performed += instance.OnA;
-                A.canceled += instance.OnA;
+                ButtonSouth.started += instance.OnButtonSouth;
+                ButtonSouth.performed += instance.OnButtonSouth;
+                ButtonSouth.canceled += instance.OnButtonSouth;
+                ButtonEast.started += instance.OnButtonEast;
+                ButtonEast.performed += instance.OnButtonEast;
+                ButtonEast.canceled += instance.OnButtonEast;
+                ButtonNorth.started += instance.OnButtonNorth;
+                ButtonNorth.performed += instance.OnButtonNorth;
+                ButtonNorth.canceled += instance.OnButtonNorth;
+                ButtonWest.started += instance.OnButtonWest;
+                ButtonWest.performed += instance.OnButtonWest;
+                ButtonWest.canceled += instance.OnButtonWest;
             }
         }
     }
@@ -641,7 +725,10 @@ public class Controls : IInputActionCollection
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnA(InputAction.CallbackContext context);
+        void OnButtonSouth(InputAction.CallbackContext context);
+        void OnButtonEast(InputAction.CallbackContext context);
+        void OnButtonNorth(InputAction.CallbackContext context);
+        void OnButtonWest(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
