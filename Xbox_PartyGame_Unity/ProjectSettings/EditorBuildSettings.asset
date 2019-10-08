@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Conetent/Julian/Scenes/MainMenu.unity
+    path: Assets/Conetent/Julian/Scenes/Setup/MainMenu.unity
     guid: 5b1043a5c66754a43a09ab2dc0c39ea8
   - enabled: 1
-    path: Assets/Conetent/Julian/Scenes/ControllerSetup.unity
+    path: Assets/Conetent/Julian/Scenes/Setup/ControllerSetup.unity
     guid: 55abc5e890bdcc94ea611e65f4af09b6
   - enabled: 1
-    path: Assets/Conetent/Julian/Scenes/GameScene.unity
+    path: Assets/Conetent/Julian/Scenes/Setup/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 382a97c429390ff4994cc841339a2a6d,
