@@ -34,8 +34,11 @@ public class PlayerCereal : MonoBehaviour
 
     void Start()
     {
-        PlayerInputCenter.PlayerInputEvents[m_player].OnMove += HandeMovement;
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += HandelButton;
+        if (PlayerInputCenter.PlayerExists(m_player))
+        {
+            PlayerInputCenter.PlayerInputEvents[m_player].OnMove += HandeMovement;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += HandelButton;
+        }
 
         m_boxShake = 0;
         m_boleStartPos = m_bole.transform.position;
@@ -46,8 +49,11 @@ public class PlayerCereal : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerInputCenter.PlayerInputEvents[m_player].OnMove -= HandeMovement;
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth -= HandelButton;
+        if (PlayerInputCenter.PlayerExists(m_player))
+        {
+            PlayerInputCenter.PlayerInputEvents[m_player].OnMove -= HandeMovement;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth -= HandelButton;
+        }
     }
 
     private void HandeMovement(InputAction.CallbackContext conext)

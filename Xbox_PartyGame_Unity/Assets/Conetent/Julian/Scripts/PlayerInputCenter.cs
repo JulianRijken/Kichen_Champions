@@ -17,6 +17,10 @@ namespace Julian.InputSystem
         public static PlayerInputCenter Instance { get; private set; }
         public static Dictionary<int, PlayerInputEvents> PlayerInputEvents { get => Instance.m_playerInputEvents; }
         public static int PlayerEventsCount { get => Instance.m_playerInputEvents.Count; }
+        public static bool PlayerExists(int player)
+        {
+            return Instance.m_playerInputEvents.ContainsKey(player);
+        }
         public static int SelectedPlayerCount
         {
             get
