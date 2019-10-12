@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1710437949369934161}
   - component: {fileID: 1710437949369934166}
   - component: {fileID: -5362893938700388527}
-  - component: {fileID: 6807969493047585075}
-  m_Layer: 0
+  - component: {fileID: 1635963677847155331}
+  m_Layer: 8
   m_Name: Cerial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,8 +96,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
-  m_LinearDrag: 0
+  m_Mass: 5
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0.5
   m_Material: {fileID: 6200000, guid: 69402176b4af6a14dbc4307ff4863d86, type: 2}
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6807969493047585075
+--- !u!60 &1635963677847155331
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.424, y: 0.604}
+    oldSize: {x: 0.32615384, y: 0.46461537}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -130,11 +130,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.065556765, y: 0.2222085}
-      - {x: -0.1885767, y: -0.0043514967}
-      - {x: -0.20540774, y: -0.23255134}
-      - {x: -0.0034235716, y: -0.3006866}
-      - {x: 0.113936186, y: -0.20740676}
-      - {x: 0.12649775, y: -0.03302306}
-      - {x: 0.20565706, y: 0.1734792}
-      - {x: 0.14106596, y: 0.29730785}
+    - - {x: -0.13088, y: 0.041917324}
+      - {x: -0.16183174, y: -0.17159802}
+      - {x: -0.0038795471, y: -0.2280609}
+      - {x: 0.090835094, y: -0.15727156}
+      - {x: 0.15844107, y: 0.11595762}
+      - {x: 0.116384625, y: 0.22994566}
+      - {x: -0.051977754, y: 0.16390574}
