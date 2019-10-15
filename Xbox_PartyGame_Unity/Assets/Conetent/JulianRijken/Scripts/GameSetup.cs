@@ -73,13 +73,13 @@ public class GameSetup : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.MainMenu));
+        SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.MainMenu));
     }
 
 
     public void StartGame(int playerCount)
     {
-        SceneManager.LoadScene(SceneFinder.GetSceneName(m_minigameHomeScene));
+        SceneManager.LoadScene(SceneLoader.GetSceneName(m_minigameHomeScene));
         PlayerInputCenter.SelectedPlayerCount = playerCount;
     }
 

@@ -29,7 +29,7 @@ public class MiniGameManager : MonoBehaviour
         m_playerCount = PlayerInputCenter.SelectedPlayerCount;
 
         if(m_playerCount < 2)      
-            SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.ControllerSetup));       
+            SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.ControllerSetup));       
         else   
             AlignPlayers();
         
@@ -92,7 +92,7 @@ public class MiniGameManager : MonoBehaviour
     {
         OnTimerDone?.Invoke();
         Debug.LogWarning("ZORG DAT JE MET FIND SCENE GEWOON LOAD SCENE KAN DOEN");
-        //SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.MinigamesHome));
+        SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.MinigamesHome));
 
     }
     public delegate void TimerDoneAction();

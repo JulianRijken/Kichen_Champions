@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public static class SceneFinder
+public static class SceneLoader
 {
     public static string GetSceneName(SceneEnumName sceneEnumName)
     {

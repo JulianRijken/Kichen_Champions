@@ -232,6 +232,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 245045082303168825, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1088,10 +1093,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45205c69117348d4287b5c7970d87a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_minigameTime: 6
+  m_minigameTime: 10
   m_unitsBitween: 4
   m_playerCount: 4
-  m_controllerSetupName: 1
   m_players:
   - {fileID: 245045081435797108}
   - {fileID: 155107889}

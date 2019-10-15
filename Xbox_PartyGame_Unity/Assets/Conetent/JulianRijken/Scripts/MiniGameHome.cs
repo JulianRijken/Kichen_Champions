@@ -40,6 +40,6 @@ public class MiniGameHome : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(SceneFinder.GetSceneName(minigameScenes[m_selectedScene]));
+        SceneManager.LoadScene(SceneLoader.GetSceneName(minigameScenes[m_selectedScene]));
     }
 }

@@ -8,6 +8,6 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.ControllerSetup));
+        SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.ControllerSetup));
     }
 }
