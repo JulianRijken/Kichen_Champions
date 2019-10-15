@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerCereal : MonoBehaviour
 {
     [SerializeField] private int m_player;
+    [SerializeField] private int m_winCount;
+    [SerializeField] private Animator m_animatior;
 
     [Header("Box")]
     [SerializeField] private Rigidbody2D m_cerealBox;
@@ -32,6 +34,7 @@ public class PlayerCereal : MonoBehaviour
     private Vector3 m_boleStartPos;
     private Vector3 m_boxStartPos;
     private float m_timer;
+    private bool m_finished;
 
     void Start()
     {
@@ -46,6 +49,8 @@ public class PlayerCereal : MonoBehaviour
         m_boxStartPos = m_cerealBox.transform.position;
 
         m_timer = Random.Range(0f, 100f);
+        m_finished = false;
+
     }
 
     private void OnDestroy()
@@ -57,6 +62,34 @@ public class PlayerCereal : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!m_finished)
+        {
+            m_timer += Time.deltaTime;
+            Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)m_bole.transform.position + m_boleCheckCenter, m_boleCheckRadius, m_cerialLayerMask);
+            if (colliders.Length > m_winCount)
+                Finish();
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (!m_finished)
+        {
+            MoveBole();
+            MoveBox();
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = m_collisionColor;
+        Gizmos.DrawSphere((Vector2)m_bole.transform.position + m_boleCheckCenter, m_boleCheckRadius);
+    }
+
+
     private void HandeMovement(InputAction.CallbackContext conext)
     {
         m_MovementInput = conext.ReadValue<Vector2>();
@@ -64,14 +97,12 @@ public class PlayerCereal : MonoBehaviour
     
     private void HandelButton(InputAction.CallbackContext conext)
     {
-        if (conext.performed)
+        if (conext.performed && !m_finished)
         {
             ObjectPooler.SpawnObject(m_cerialName, m_cerealSpawnPoint.transform.position, m_cerealSpawnPoint.transform.rotation,true);
             m_boxShake = m_boxShakeAmmount;
         }
     }
-
-
 
 
     private void MoveBox()
@@ -82,28 +113,6 @@ public class PlayerCereal : MonoBehaviour
         addedMove *= m_boxShake;
         m_cerealBox.MovePosition(m_boxStartPos + addedMove);
     }
-
-    private void Update()
-    {
-        m_timer += Time.deltaTime;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)m_bole.transform.position + m_boleCheckCenter, m_boleCheckRadius, m_cerialLayerMask);
-        //Debug.Log(colliders.Length);
-    }
-
-    private void FixedUpdate()
-    {
-        MoveBole();
-        MoveBox();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = m_collisionColor;
-        Gizmos.DrawSphere((Vector2)m_bole.transform.position + m_boleCheckCenter, m_boleCheckRadius);
-    }
-
-
 
     private void MoveBole()
     {
@@ -120,4 +129,12 @@ public class PlayerCereal : MonoBehaviour
 
         Debug.DrawLine(m_bole.transform.position, m_boleStartPos);
     }
+
+    private void Finish()
+    {
+        m_finished = true;
+        m_animatior.SetTrigger("Finish");
+    }
+
+
 }

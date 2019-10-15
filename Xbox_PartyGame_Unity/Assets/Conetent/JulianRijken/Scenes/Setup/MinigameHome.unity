@@ -1730,9 +1730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dropdown: {fileID: 789108540}
-  minigameScenes:
-  - Cereal
-  - MainMenu
+  minigameScenes: 03000000
 --- !u!1 &1742763924
 GameObject:
   m_ObjectHideFlags: 0
