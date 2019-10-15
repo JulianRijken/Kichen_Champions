@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Julian.InputSystem;
 using UnityEngine.InputSystem;
-public class Input : MonoBehaviour
+public class BTMInput : MonoBehaviour
 {
     [SerializeField] private int m_player;
     [SerializeField] private int m_beats;
@@ -15,6 +15,7 @@ public class Input : MonoBehaviour
     [SerializeField] private float m_tick;
 
     private bool cancel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,4 +75,5 @@ public class Input : MonoBehaviour
             gameHandler.SetWinner(m_player);
         }
     }
+    
 }

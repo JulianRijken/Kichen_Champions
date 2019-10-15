@@ -171,12 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c6a022498b4d41b4a87f346b0cab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: 1
+  m_player: 0
   m_beats: 0
-  m_hammer: {fileID: 1657646808}
-  m_meat: {fileID: 987908149}
-  gameHandler: {fileID: 640830105}
-  m_tick: 0.3
+  m_hammer: {fileID: 0}
+  m_meat: {fileID: 0}
+  gameHandler: {fileID: 0}
+  m_tick: 0
 --- !u!1 &86413730
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,12 +309,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c6a022498b4d41b4a87f346b0cab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: 2
+  m_player: 0
   m_beats: 0
-  m_hammer: {fileID: 370658527}
-  m_meat: {fileID: 1682405135}
-  gameHandler: {fileID: 640830105}
-  m_tick: 0.3
+  m_hammer: {fileID: 0}
+  m_meat: {fileID: 0}
+  gameHandler: {fileID: 0}
+  m_tick: 0
 --- !u!1 &280437637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,12 +1434,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c6a022498b4d41b4a87f346b0cab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: 3
+  m_player: 0
   m_beats: 0
-  m_hammer: {fileID: 1383687192}
-  m_meat: {fileID: 469451162}
-  gameHandler: {fileID: 640830105}
-  m_tick: 0.3
+  m_hammer: {fileID: 0}
+  m_meat: {fileID: 0}
+  gameHandler: {fileID: 0}
+  m_tick: 0
 --- !u!1001 &1795152894
 PrefabInstance:
   m_ObjectHideFlags: 0
