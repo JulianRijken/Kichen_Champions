@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -240,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
@@ -337,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
@@ -616,7 +616,7 @@ PrefabInstance:
     - target: {fileID: 245045082303168825, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
@@ -1094,13 +1094,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_minigameTime: 10
-  m_unitsBitween: 4
-  m_playerCount: 4
   m_players:
   - {fileID: 245045081435797108}
   - {fileID: 155107889}
   - {fileID: 1051132487}
   - {fileID: 1127140729}
+  m_playerCount: 4
+  m_align: 1
+  m_unitsBitween: 4
 --- !u!4 &1924699278
 Transform:
   m_ObjectHideFlags: 0
@@ -1248,7 +1249,7 @@ PrefabInstance:
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 245045082303168824, guid: 57e1ea65199dd244d8f5f5608d18a1f8,
         type: 3}

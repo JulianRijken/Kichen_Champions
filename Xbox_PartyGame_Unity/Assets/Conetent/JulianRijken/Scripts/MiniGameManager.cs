@@ -9,10 +9,16 @@ public class MiniGameManager : MonoBehaviour
 {
     public static MiniGameManager Instance { get; private set; }
 
+    [Header("Timer")]
     [SerializeField] private float m_minigameTime;
-    [SerializeField] private float m_unitsBitween;
+
+    [Header("Players")]
+    [SerializeField] private GameObject[] m_players;
     [SerializeField] private int m_playerCount;
-    [SerializeField] private Transform[] m_players;
+
+    [Header("Alignment")]
+    [SerializeField] private bool m_align;
+    [SerializeField] private float m_unitsBitween;
 
     private bool timerDone;
     private float timer;
@@ -31,7 +37,7 @@ public class MiniGameManager : MonoBehaviour
         if(m_playerCount < 2)      
             SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.ControllerSetup));       
         else   
-            AlignPlayers();
+            ResetPlayers();
         
 
     }
@@ -66,24 +72,31 @@ public class MiniGameManager : MonoBehaviour
 
 
 
-    [ContextMenu("Align")]
-    private void AlignPlayers()
+    [ContextMenu("ResetPlayers")]
+    private void ResetPlayers()
     {
         for (int i = 0; i < m_players.Length; i++)
-            m_players[i].gameObject.SetActive(false);
-
-        float centerX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 0, 0)).x;
+            m_players[i].SetActive(false);
 
         for (int i = 0; i < m_playerCount; i++)
+            m_players[i].SetActive(true);
+
+        if (m_align)
         {
-            float a = m_unitsBitween;
-            float b = m_playerCount;
+            float centerX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 0, 0)).x;
 
-            float posX = centerX - ((a * b - a) / 2f) + a * i;
+            for (int i = 0; i < m_playerCount; i++)
+            {
+                float a = m_unitsBitween;
+                float b = m_playerCount;
 
-            Vector2 newPos = new Vector2(posX, transform.position.y);
-            m_players[i].position = newPos;
-            m_players[i].gameObject.SetActive(true);
+                float posX = centerX - ((a * b - a) / 2f) + a * i;
+
+                Vector2 newPos = new Vector2(posX, transform.position.y);
+
+                if(m_players[i].GetComponent<RectTransform>() == null)
+                    m_players[i].transform.position = newPos;
+            }
         }
     }
 
