@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c6a022498b4d41b4a87f346b0cab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: 0
+  m_player: 1
   m_beats: 0
   m_hammer: {fileID: 1657646808}
   m_meat: {fileID: 987908149}
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c6a022498b4d41b4a87f346b0cab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: 0
+  m_player: 2
   m_beats: 0
   m_hammer: {fileID: 370658527}
   m_meat: {fileID: 1682405135}
@@ -1395,7 +1395,7 @@ GameObject:
   - component: {fileID: 1702993999}
   - component: {fileID: 1702994000}
   m_Layer: 5
-  m_Name: P1 (1)
+  m_Name: P4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c6a022498b4d41b4a87f346b0cab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: 0
+  m_player: 3
   m_beats: 0
   m_hammer: {fileID: 1383687192}
   m_meat: {fileID: 469451162}
