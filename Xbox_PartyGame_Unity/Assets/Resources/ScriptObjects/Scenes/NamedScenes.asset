@@ -21,3 +21,5 @@ MonoBehaviour:
     sceneName: MinigameHome
   - sceneEnumName: 3
     sceneName: Cereal
+  - sceneEnumName: 4
+    sceneName: BeatMeat
