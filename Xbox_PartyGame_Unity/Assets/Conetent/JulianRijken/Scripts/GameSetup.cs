@@ -73,7 +73,7 @@ public class GameSetup : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.MainMenu));
     }
 
 

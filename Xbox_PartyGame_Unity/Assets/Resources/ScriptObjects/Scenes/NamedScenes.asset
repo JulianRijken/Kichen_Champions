@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2c41bce3a22a5e34a91256c252e2f190, type: 3}
   m_Name: NamedScenes
   m_EditorClassIdentifier: Assembly-CSharp::NamedScenes
   m_namedScenes:

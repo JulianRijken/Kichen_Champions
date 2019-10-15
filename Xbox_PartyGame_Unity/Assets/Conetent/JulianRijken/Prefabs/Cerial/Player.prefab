@@ -315,6 +315,7 @@ MonoBehaviour:
   m_swaySpeed: 4
   m_noiseSwayScale: 1.5
   m_noiseSwaySpeed: 1
+  m_collisionColor: {r: 1, g: 1, b: 1, a: 0.42745098}
 --- !u!1 &245045082697085769
 GameObject:
   m_ObjectHideFlags: 0

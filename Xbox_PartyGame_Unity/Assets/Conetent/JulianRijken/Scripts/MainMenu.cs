@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    //[SerializeField] private Scene levelSelectScene;
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.ControllerSetup));
     }
 }

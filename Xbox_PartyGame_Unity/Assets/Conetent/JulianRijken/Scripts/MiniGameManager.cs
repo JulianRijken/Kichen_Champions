@@ -92,7 +92,8 @@ public class MiniGameManager : MonoBehaviour
     {
         OnTimerDone?.Invoke();
         Debug.LogWarning("ZORG DAT JE MET FIND SCENE GEWOON LOAD SCENE KAN DOEN");
-        SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.MinigamesHome));
+        //SceneManager.LoadScene(SceneFinder.GetSceneName(SceneEnumName.MinigamesHome));
+
     }
     public delegate void TimerDoneAction();
     public event TimerDoneAction OnTimerDone;

@@ -26,6 +26,7 @@ public class PlayerCereal : MonoBehaviour
     [SerializeField] private float m_swaySpeed;
     [SerializeField] private float m_noiseSwayScale;
     [SerializeField] private float m_noiseSwaySpeed;
+    [SerializeField] private Color m_collisionColor;
 
     private Vector2 m_MovementInput;
     private Vector3 m_boleStartPos;
@@ -72,6 +73,7 @@ public class PlayerCereal : MonoBehaviour
 
 
 
+
     private void MoveBox()
     {
         m_boxShake -= Time.deltaTime * m_boxShakeStopSpeed;
@@ -97,7 +99,7 @@ public class PlayerCereal : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(0, 1f, 0, 0.5f);
+        Gizmos.color = m_collisionColor;
         Gizmos.DrawSphere((Vector2)m_bole.transform.position + m_boleCheckCenter, m_boleCheckRadius);
     }
 
