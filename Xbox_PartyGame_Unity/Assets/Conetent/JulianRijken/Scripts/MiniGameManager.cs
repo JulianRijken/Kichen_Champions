@@ -18,7 +18,10 @@ public class MiniGameManager : MonoBehaviour
 
     [Header("Alignment")]
     [SerializeField] private bool m_align;
-    [SerializeField] private float m_unitsBitween;
+    [SerializeField] private bool m_Grid;
+
+    [SerializeField] private float m_unitsBitweenX;
+    [SerializeField] private float m_unitsBitweenY;
 
     private bool[] m_playersDone;
     private bool timerDone;
@@ -105,20 +108,60 @@ public class MiniGameManager : MonoBehaviour
 
         if (m_align)
         {
-            float centerX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 0, 0)).x;
+            float centerX = Camera.main.transform.position.x;
+            float centerY = Camera.main.transform.position.y;
+            bool m_gridLocal = m_Grid;
 
-            for (int i = 0; i < m_playerCount; i++)
+            if (m_playerCount == 2 && m_gridLocal) m_gridLocal = false;
+
+            if (m_gridLocal)
             {
-                float a = m_unitsBitween;
-                float b = m_playerCount;
+                for (int i = 0; i < m_playerCount; i++)
+                {
+                    int iCopy = i;
+                    float ax = m_unitsBitweenX;
+                    float ay = m_unitsBitweenY;
+                    float b = m_playerCount;
+                    float posY = centerY + ay;
+                    if (m_gridLocal)
+                    {
+                        if (i >= 2)
+                        {
+                            iCopy = Mathf.CeilToInt(i / 2f) - 1;
+                            posY = centerY - ay;
+                        };
 
-                float posX = centerX - ((a * b - a) / 2f) + a * i;
+                    }
+                    print(i+"I");
+                    float posX = centerX - ((ax * Mathf.Ceil(b/2f) - ax) / 2f) + ax * iCopy;
 
-                Vector2 newPos = new Vector2(posX, transform.position.y);
+                    if (m_playerCount == 3 && i == 2)
+                    {
+                        posX = centerX;
+                    }
 
-                if(m_players[i].GetComponent<RectTransform>() == null)
-                    m_players[i].transform.position = newPos;
+                    Vector2 newPos = new Vector2(posX, posY);
+
+                    if (m_players[i].GetComponent<RectTransform>() == null)
+                        m_players[i].transform.position = newPos;
+                }
+
             }
+            else
+            {
+                for (int i = 0; i < m_playerCount; i++)
+                {
+                    float a = m_unitsBitweenX;
+                    float b = m_playerCount;
+                    float posX = centerX - ((a * b - a) / 2f) + a * i;
+
+                    Vector2 newPos = new Vector2(posX, transform.position.y);
+
+                    if (m_players[i].GetComponent<RectTransform>() == null)
+                        m_players[i].transform.position = newPos;
+                }
+            }
+
         }
     }
 
