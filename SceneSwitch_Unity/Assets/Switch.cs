@@ -5,22 +5,23 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
 
-    AsyncOperation operation;
+    private AsyncOperation operation;
 
-    private void Update()
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SceneLoader.LoadScene(SceneEnumName.SceneOne);
-        }
+        SceneLoader.OnLoadSceneAsync += OnLoadScene;
 
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            operation = SceneLoader.LoadSceneAsync(SceneEnumName.SceneTwo);
-        }
+    }
 
-        if (operation != null)
-            Debug.Log(operation.progress);
+    private void OnDestroy()
+    {
+        SceneLoader.OnLoadSceneAsync -= OnLoadScene;
+    }
+
+    private void OnLoadScene(AsyncOperation operation)
+    {
+        Debug.Log("Test");
     }
 }

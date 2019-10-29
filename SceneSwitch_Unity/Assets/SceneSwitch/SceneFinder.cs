@@ -16,12 +16,16 @@ public static class SceneLoader
         SceneManager.LoadScene(scene);
     }
 
-    public static AsyncOperation LoadSceneAsync(SceneEnumName sceneEnumName)
+    public static void LoadSceneAsync(SceneEnumName sceneEnumName)
     {
         SceneNames container = Resources.Load<SceneNames>("ScriptObjects/Scenes/NamedScenes");
         string scene = container.GetSceneName(sceneEnumName);
-        return SceneManager.LoadSceneAsync(scene);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+        OnLoadSceneAsync?.Invoke(operation);
     }
+
+    public delegate void LoadSceneAsyncAction(AsyncOperation operation);
+    public static event LoadSceneAsyncAction OnLoadSceneAsync;
 
 }
 
