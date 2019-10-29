@@ -15,12 +15,12 @@ public class MiniGameManager : MonoBehaviour
     [Header("Players")]
     [SerializeField] private GameObject[] m_players;
     [SerializeField] private int m_playerCount;
-    [SerializeField] private bool[] m_playersDone;
 
     [Header("Alignment")]
     [SerializeField] private bool m_align;
     [SerializeField] private float m_unitsBitween;
 
+    private bool[] m_playersDone;
     private bool timerDone;
     private float timer;
 

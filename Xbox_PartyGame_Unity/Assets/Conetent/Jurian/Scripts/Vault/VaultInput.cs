@@ -10,14 +10,13 @@ public class VaultInput : MonoBehaviour
 {
     [Header("Required instances")]
     [SerializeField, Tooltip("Player Integer")] private int m_player;
-    [SerializeField] private GameHandler GameHandler;
     [SerializeField] private Sprite Xbutton, Ybutton, AButton, Bbutton;
 
-    [SerializeField, Header("Debug")] private GameHandler.ButtonSelection Button;
+    [SerializeField, Header("Debug")] private ButtonSelection Button;
     private int m_correctPress;
     private bool GameRunning;
     private double delta;
-    private Dictionary<GameHandler.ButtonSelection, Sprite> buttonText;
+    private Dictionary<ButtonSelection, Sprite> buttonText;
     private SpriteRenderer spriteRenderer;
 
     private Sprite sprite;
@@ -28,20 +27,20 @@ public class VaultInput : MonoBehaviour
         PlayerInputCenter.PlayerInputEvents[m_player].OnButtonEast += buttonEastPressed;
         PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += buttonSouthPressed;
         PlayerInputCenter.PlayerInputEvents[m_player].OnButtonWest += buttonWestPressed;
-        buttonText = new Dictionary<GameHandler.ButtonSelection, Sprite>();
-        buttonText.Add(GameHandler.ButtonSelection.North, Ybutton);
-        buttonText.Add(GameHandler.ButtonSelection.East, Bbutton);
-        buttonText.Add(GameHandler.ButtonSelection.South, AButton);
-        buttonText.Add(GameHandler.ButtonSelection.West, Xbutton);
+        buttonText = new Dictionary<ButtonSelection, Sprite>();
+        buttonText.Add(ButtonSelection.North, Ybutton);
+        buttonText.Add(ButtonSelection.East, Bbutton);
+        buttonText.Add(ButtonSelection.South, AButton);
+        buttonText.Add(ButtonSelection.West, Xbutton);
        
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        ButtonSelection();
+        SelectButton();
     }
 
-    private void ButtonSelection()
+    private void SelectButton()
     {
         delta = 0;
-        Button = GameHandler.RandomButtonSelection();
+        Button = (ButtonSelection)Random.Range((int)ButtonSelection.North, (int)ButtonSelection.West + 1);
         print(Button);
         if (buttonText.TryGetValue(Button, out sprite))
         {
@@ -51,54 +50,54 @@ public class VaultInput : MonoBehaviour
 
     private void buttonNorthPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == GameHandler.ButtonSelection.North)
+        if (context.performed && Button == ButtonSelection.North)
         {
             m_correctPress += 1;
             // -- visuals
-            ButtonSelection();
+            SelectButton();
         }
-        else if (context.performed && Button != GameHandler.ButtonSelection.North)
+        else if (context.performed && Button != ButtonSelection.North)
         {
-            ButtonSelection();
+            SelectButton();
         }
     }
     private void buttonEastPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == GameHandler.ButtonSelection.East)
+        if (context.performed && Button == ButtonSelection.East)
         {
             m_correctPress += 1;
             // -- visuals
-            ButtonSelection();
+            SelectButton();
         }
-        else if (context.performed && Button != GameHandler.ButtonSelection.East)
+        else if (context.performed && Button != ButtonSelection.East)
         {
-            ButtonSelection();
+            SelectButton();
         }
     }
     private void buttonSouthPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == GameHandler.ButtonSelection.South)
+        if (context.performed && Button == ButtonSelection.South)
         {
             m_correctPress += 1;
             // -- visuals
-            ButtonSelection();
+            SelectButton();
         }
-        else if(context.performed && Button != GameHandler.ButtonSelection.South)
+        else if(context.performed && Button != ButtonSelection.South)
         {
-            ButtonSelection();
+            SelectButton();
         }
     }
     private void buttonWestPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == GameHandler.ButtonSelection.West)
+        if (context.performed && Button == ButtonSelection.West)
         {
             m_correctPress += 1;
             // -- visuals
-            ButtonSelection();
+            SelectButton();
         }
-        else if (context.performed && Button != GameHandler.ButtonSelection.West)
+        else if (context.performed && Button != ButtonSelection.West)
         {
-            ButtonSelection();
+            SelectButton();
         }
     }
 
@@ -107,12 +106,12 @@ public class VaultInput : MonoBehaviour
         delta += Time.deltaTime;
         if (m_correctPress > 7)
         {
-            GameHandler.SetWinner(m_player);
+            MiniGameManager.SetPlayerDone(m_player);
         }
 
         if (delta >= .75)
         {
-            ButtonSelection();
+            SelectButton();
         }
     }
 }
