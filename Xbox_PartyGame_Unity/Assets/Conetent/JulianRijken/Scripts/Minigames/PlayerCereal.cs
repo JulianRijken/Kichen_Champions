@@ -71,7 +71,6 @@ public class PlayerCereal : MonoBehaviour
             if (colliders.Length > m_winCount)
                 Finish();
         }
-
     }
 
     private void FixedUpdate()
@@ -89,7 +88,6 @@ public class PlayerCereal : MonoBehaviour
         Gizmos.DrawSphere((Vector2)m_bole.transform.position + m_boleCheckCenter, m_boleCheckRadius);
     }
 
-
     private void HandeMovement(InputAction.CallbackContext conext)
     {
         m_MovementInput = conext.ReadValue<Vector2>();
@@ -102,6 +100,7 @@ public class PlayerCereal : MonoBehaviour
             ObjectPooler.SpawnObject(m_cerialName, m_cerealSpawnPoint.transform.position, m_cerealSpawnPoint.transform.rotation,true);
             m_boxShake = m_boxShakeAmmount;
         }
+
     }
 
 
@@ -134,6 +133,7 @@ public class PlayerCereal : MonoBehaviour
     {
         m_finished = true;
         m_animatior.SetTrigger("Finish");
+        MiniGameManager.SetPlayerDone(m_player);
     }
 
 

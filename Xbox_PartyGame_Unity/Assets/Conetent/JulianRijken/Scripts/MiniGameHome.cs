@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MiniGameHome : MonoBehaviour
@@ -10,24 +8,34 @@ public class MiniGameHome : MonoBehaviour
 
     [SerializeField] private TMP_Dropdown m_dropdown;
     [SerializeField] private List<SceneEnumName> minigameScenes;
-    private List<string> minigameScenesString;
+    [SerializeField] private TextMeshProUGUI[] m_scoreTexts;
 
+    private List<string> _minigameScenesString;
     private int m_selectedScene;
 
     void Start()
     {
 
-        minigameScenesString = new List<string>();
+        _minigameScenesString = new List<string>();
 
         for (int i = 0; i < minigameScenes.Count; i++)
         {
-            minigameScenesString.Add(minigameScenes[i].ToString());
+            _minigameScenesString.Add(minigameScenes[i].ToString());
         }
 
         m_dropdown.ClearOptions();
-        m_dropdown.AddOptions(minigameScenesString);
+        m_dropdown.AddOptions(_minigameScenesString);
 
         m_dropdown.value = 0;
+
+        for (int i = 0; i < m_scoreTexts.Length; i++)
+        {
+            PlayerData playerData = GameManager.ScoreCenter.GetPlayerData(i);
+            if (playerData != null)
+                m_scoreTexts[i].text = playerData.m_score.ToString();
+            else
+                m_scoreTexts[i].text = "X";
+        }
 
     }
 

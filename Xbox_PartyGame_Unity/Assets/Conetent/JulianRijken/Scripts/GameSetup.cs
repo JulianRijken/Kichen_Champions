@@ -79,6 +79,8 @@ public class GameSetup : MonoBehaviour
 
     public void StartGame(int playerCount)
     {
+        GameManager.ScoreCenter.CreateNewPlayerData(playerCount);
+        GameManager.NotificationCenter.FireGameStart(playerCount);
         SceneManager.LoadScene(SceneLoader.GetSceneName(m_minigameHomeScene));
         PlayerInputCenter.SelectedPlayerCount = playerCount;
     }

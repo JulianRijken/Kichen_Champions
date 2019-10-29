@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class NotificationCenter
 {
-
-    /// <summary>
-    /// Fires the Gun Mag Ammo Change event
-    /// </summary>
-    //public void FireGunMagAmmoChange(int newAmmoInMag, int maxAmmo)
-    //{
-    //    OnGunMagAmmoUpdated?.Invoke(newAmmoInMag, maxAmmo);
-    //}
-    //public delegate void GunMagUpdateAction(int newAmmoInMag, int maxAmmo);
-    //public event GunMagUpdateAction OnGunMagAmmoUpdated;
+    public void FireGameStart(int playerCount)
+    {
+        OnGameStart?.Invoke(playerCount);
+    }
+    public delegate void GameStartAction(int playerCount);
+    public event GameStartAction OnGameStart;
 
 }

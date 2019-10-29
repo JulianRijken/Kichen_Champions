@@ -15,6 +15,7 @@ public class MiniGameManager : MonoBehaviour
     [Header("Players")]
     [SerializeField] private GameObject[] m_players;
     [SerializeField] private int m_playerCount;
+    [SerializeField] private bool[] m_playersDone;
 
     [Header("Alignment")]
     [SerializeField] private bool m_align;
@@ -38,8 +39,12 @@ public class MiniGameManager : MonoBehaviour
             SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.ControllerSetup));       
         else   
             ResetPlayers();
-        
 
+        m_playersDone = new bool[m_playerCount];
+        for (int i = 0; i < m_playersDone.Length; i++)
+        {
+            m_playersDone[i] = false;
+        }
     }
 
     private void Start()
@@ -59,9 +64,26 @@ public class MiniGameManager : MonoBehaviour
                 timer = 0;
                 timerDone = true;
                 FireTimerUpdate(timer);
-                FireTimerDone();
+                FireTimerOver();
+                OnTimerOver();
             }
         }
+    }
+
+    private void OnTimerOver()
+    {
+        for (int i = 0; i < m_playersDone.Length; i++)
+        {
+            if(m_playersDone[i] == true)
+            {
+                GameManager.ScoreCenter.AddScore(i, 1);
+            }
+        }
+    }
+
+    public static void SetPlayerDone(int player)
+    {
+        Instance.m_playersDone[player] = true;
     }
 
     private void LateUpdate()
@@ -101,12 +123,11 @@ public class MiniGameManager : MonoBehaviour
     }
 
 
-    public void FireTimerDone()
+    public void FireTimerOver()
     {
         OnTimerDone?.Invoke();
         Debug.LogWarning("ZORG DAT JE MET FIND SCENE GEWOON LOAD SCENE KAN DOEN");
         SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.MinigamesHome));
-
     }
     public delegate void TimerDoneAction();
     public event TimerDoneAction OnTimerDone;

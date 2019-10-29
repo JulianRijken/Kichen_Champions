@@ -5,71 +5,29 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    private NotificationCenter m_notificationCenter;
+    private ScoreCenter m_scoreCenter;
 
-    private int m_connectedPlayersAtStart;
-    private Dictionary<int, PlayerData> m_playerData;
-
-    public static GameManager Instance { get; private set; }
-    public Dictionary<int, PlayerData> PlayerData
-    {
-        get
-        {
-            if (m_playerData == null)
-            {
-                m_playerData = new Dictionary<int, PlayerData>();
-            }
-
-            return m_playerData;
-        }
-    }
-    public int ConnectedPlayersAtStart
-    {
-        get => m_connectedPlayersAtStart;     
-        set
-        {
-            if (value > 4)          
-                m_connectedPlayersAtStart = 4;           
-            else            
-                m_connectedPlayersAtStart = value;       
-        }
-
-    }
+    public static GameManager m_instance { get; private set; }
+    public static NotificationCenter NotificationCenter { get => m_instance.m_notificationCenter; }
+    public static ScoreCenter ScoreCenter { get => m_instance.m_scoreCenter; }
 
 
     private void Awake()
     {
-        if (Instance == null)
+        if (m_instance == null)
         {
-            Instance = this;
-            DontDestroyOnLoad(Instance.gameObject);
+            m_instance = this;
+            DontDestroyOnLoad(m_instance.gameObject);
+
+            m_notificationCenter = new NotificationCenter();
+            m_scoreCenter = new ScoreCenter();
         }
-        else if (this != Instance)
+        else if (this != m_instance)
         {
             Destroy(gameObject);
         }
     }
 
-
-    public void AddPlayer(int user)
-    {
-        PlayerData.Add(user, new PlayerData());
-    }
-
-    public void RemovePlayer(int user)
-    {
-        PlayerData.Remove(user);
-    }
-
-    public PlayerData GetPlayerData(int user)
-    {
-        return PlayerData[user];
-    }
-
-}
-
-public class PlayerData
-{
-    public int m_score;
-    public Color m_playerColor;
 }
 
