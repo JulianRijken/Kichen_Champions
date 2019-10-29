@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameHandler : MonoBehaviour
 {
-    private bool GameRunning;
-    public bool Gamerunning { get { return GameRunning; } }
+    public bool Gamerunning { get; private set; }
     public enum ButtonSelection
     {
         North = 0,
@@ -16,7 +15,7 @@ public class GameHandler : MonoBehaviour
     public void SetWinner(int winner)
     {
         Debug.Log("Winner: Player " + winner);
-        GameRunning = false;
+        Gamerunning = false;
     }
     
     public ButtonSelection RandomButtonSelection()
