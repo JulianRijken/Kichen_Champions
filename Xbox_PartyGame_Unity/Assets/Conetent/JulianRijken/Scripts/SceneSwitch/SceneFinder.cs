@@ -7,6 +7,7 @@ public static class SceneLoader
         SceneNames container = Resources.Load<SceneNames>("ScriptObjects/Scenes/NamedScenes");
         return container.GetSceneName(sceneEnumName);
     }
+
 }
 
 public enum SceneEnumName
