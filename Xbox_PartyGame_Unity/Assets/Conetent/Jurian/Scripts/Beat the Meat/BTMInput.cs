@@ -11,7 +11,6 @@ public class BTMInput : MonoBehaviour
     [SerializeField] private GameObject m_hammer;
     [SerializeField] private GameObject m_meat;
 
-    [SerializeField] private GameHandler gameHandler;
     [SerializeField] private float m_tick;
 
     private bool cancel;
@@ -72,7 +71,7 @@ public class BTMInput : MonoBehaviour
     {
         if (m_beats >= 60)
         {
-            gameHandler.SetWinner(m_player);
+            MiniGameManager.SetPlayerDone(m_player);
         }
     }
     
