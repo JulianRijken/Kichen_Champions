@@ -10,14 +10,17 @@ public class VaultInput : MonoBehaviour
 {
     [Header("Required instances")]
     [SerializeField, Tooltip("Player Integer")] private int m_player;
+    [SerializeField] private GameObject stand;
     [SerializeField] private Sprite Xbutton, Ybutton, AButton, Bbutton;
 
     [SerializeField, Header("Debug")] private ButtonSelection Button;
+
     private int m_correctPress;
     private bool GameRunning;
     private double delta;
     private Dictionary<ButtonSelection, Sprite> buttonText;
     private SpriteRenderer spriteRenderer;
+    private bool done;
 
     private Sprite sprite;
 
@@ -32,9 +35,21 @@ public class VaultInput : MonoBehaviour
         buttonText.Add(ButtonSelection.East, Bbutton);
         buttonText.Add(ButtonSelection.South, AButton);
         buttonText.Add(ButtonSelection.West, Xbutton);
-       
+
+        done = false;
+
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         SelectButton();
+    }
+
+    IEnumerator StandFall()
+    {
+
+        for (int i = 0; i < 10; i++)
+        {
+            stand.transform.rotation = Quaternion.Lerp(stand.transform.rotation, Quaternion.Euler(0, 0, 85), .1f);
+            yield return new WaitForSeconds(.005f);
+        }
     }
 
     private void SelectButton()
@@ -50,52 +65,52 @@ public class VaultInput : MonoBehaviour
 
     private void buttonNorthPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == ButtonSelection.North)
+        if (context.performed && Button == ButtonSelection.North && !done)
         {
             m_correctPress += 1;
             // -- visuals
             SelectButton();
         }
-        else if (context.performed && Button != ButtonSelection.North)
+        else if (context.performed && Button != ButtonSelection.North && !done)
         {
             SelectButton();
         }
     }
     private void buttonEastPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == ButtonSelection.East)
+        if (context.performed && Button == ButtonSelection.East && !done)
         {
             m_correctPress += 1;
             // -- visuals
             SelectButton();
         }
-        else if (context.performed && Button != ButtonSelection.East)
+        else if (context.performed && Button != ButtonSelection.East && !done)
         {
             SelectButton();
         }
     }
     private void buttonSouthPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == ButtonSelection.South)
+        if (context.performed && Button == ButtonSelection.South && !done)
         {
             m_correctPress += 1;
             // -- visuals
             SelectButton();
         }
-        else if(context.performed && Button != ButtonSelection.South)
+        else if(context.performed && Button != ButtonSelection.South && !done)
         {
             SelectButton();
         }
     }
     private void buttonWestPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && Button == ButtonSelection.West)
+        if (context.performed && Button == ButtonSelection.West && !done)
         {
             m_correctPress += 1;
             // -- visuals
             SelectButton();
         }
-        else if (context.performed && Button != ButtonSelection.West)
+        else if (context.performed && Button != ButtonSelection.West && !done)
         {
             SelectButton();
         }
@@ -104,12 +119,14 @@ public class VaultInput : MonoBehaviour
     private void Update()
     {
         delta += Time.deltaTime;
-        if (m_correctPress > 7)
+        if (m_correctPress > 7 && !done)
         {
+            done = true;
+            StartCoroutine(StandFall());
             MiniGameManager.SetPlayerDone(m_player);
         }
 
-        if (delta >= .75)
+        if (delta >= .75 && !done)
         {
             SelectButton();
         }

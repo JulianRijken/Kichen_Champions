@@ -3,7 +3,15 @@ guid: 094b7b76bf86a1d4d9e3da10760abf24
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Xbutton: {fileID: -332283156610070187, guid: f662d3591413962499661a1429388610,
+      type: 3}
+  - Ybutton: {fileID: 5330777248724756714, guid: f662d3591413962499661a1429388610,
+      type: 3}
+  - AButton: {fileID: -2687897492780028781, guid: f662d3591413962499661a1429388610,
+      type: 3}
+  - Bbutton: {fileID: 2232498024507700310, guid: f662d3591413962499661a1429388610,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
