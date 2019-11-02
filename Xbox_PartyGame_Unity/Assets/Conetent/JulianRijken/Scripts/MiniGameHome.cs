@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MiniGameHome : MonoBehaviour
 {
@@ -48,6 +47,6 @@ public class MiniGameHome : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(SceneLoader.GetSceneName(minigameScenes[m_selectedScene]));
+        SceneLoader.LoadSceneAsync(minigameScenes[m_selectedScene]);
     }
 }

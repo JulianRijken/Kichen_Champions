@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Julian.InputSystem;
 using UnityEditor;
-using UnityEngine.SceneManagement;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -39,7 +38,7 @@ public class MiniGameManager : MonoBehaviour
         m_playerCount = PlayerInputCenter.SelectedPlayerCount;
 
         if(m_playerCount < 2)      
-            SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.ControllerSetup));       
+            SceneLoader.LoadScene(SceneEnumName.ControllerSetup);       
         else   
             ResetPlayers();
 
@@ -169,8 +168,7 @@ public class MiniGameManager : MonoBehaviour
     public void FireTimerOver()
     {
         OnTimerDone?.Invoke();
-        Debug.LogWarning("ZORG DAT JE MET FIND SCENE GEWOON LOAD SCENE KAN DOEN");
-        SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.MinigamesHome));
+        SceneLoader.LoadSceneAsync(SceneEnumName.MinigamesHome);
     }
     public delegate void TimerDoneAction();
     public event TimerDoneAction OnTimerDone;

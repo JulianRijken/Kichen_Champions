@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEngine.SceneManagement;
 using Julian.InputSystem;
 
 public class GameSetup : MonoBehaviour
@@ -73,7 +72,7 @@ public class GameSetup : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(SceneLoader.GetSceneName(SceneEnumName.MainMenu));
+        SceneLoader.LoadSceneAsync(SceneEnumName.MainMenu);
     }
 
 
@@ -81,7 +80,7 @@ public class GameSetup : MonoBehaviour
     {
         GameManager.ScoreCenter.CreateNewPlayerData(playerCount);
         GameManager.NotificationCenter.FireGameStart(playerCount);
-        SceneManager.LoadScene(SceneLoader.GetSceneName(m_minigameHomeScene));
+        SceneLoader.LoadSceneAsync(m_minigameHomeScene);
         PlayerInputCenter.SelectedPlayerCount = playerCount;
     }
 
