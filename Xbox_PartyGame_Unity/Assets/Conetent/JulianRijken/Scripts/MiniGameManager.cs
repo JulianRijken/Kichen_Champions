@@ -35,7 +35,7 @@ public class MiniGameManager : MonoBehaviour
 
     private void Start()
     {
-        m_timer = m_minigameTime;
+        m_timer = 0;
         m_IsTimerDone = false;
     }
 
@@ -43,14 +43,14 @@ public class MiniGameManager : MonoBehaviour
     {
         if (!m_IsTimerDone)
         {
-            m_timer -= Time.deltaTime;
+            m_timer += Time.deltaTime;
 
-            if (m_timer <= 0)
+            if (m_timer >= m_minigameTime)
             {
-                m_timer = 0;
+                m_timer = m_minigameTime;
                 m_IsTimerDone = true;
                 OnTimerOver();
-                FireTimerUpdate(m_timer);
+                UpdateTimer();
                 FireTimerOver();
             }
         }
@@ -75,9 +75,14 @@ public class MiniGameManager : MonoBehaviour
     private void LateUpdate()
     {
         if (!m_IsTimerDone)
-            FireTimerUpdate(m_timer);
+            UpdateTimer();
     }
 
+
+    private void UpdateTimer()
+    {
+        FireTimerUpdate(Mathf.Clamp01(m_timer / m_minigameTime), m_timer);
+    }
 
 
     public void FireTimerOver()
@@ -88,11 +93,11 @@ public class MiniGameManager : MonoBehaviour
     public delegate void TimerDoneAction();
     public event TimerDoneAction OnTimerDone;
 
-    public void FireTimerUpdate(float time)
+    public void FireTimerUpdate(float procent,float time)
     {
-        OnTimerUpdate?.Invoke(time);
+        OnTimerUpdate?.Invoke(procent, time);
     }
-    public delegate void TimerUpdateAction(float time);
+    public delegate void TimerUpdateAction(float procent, float time);
     public event TimerUpdateAction OnTimerUpdate;
 
 }
