@@ -591,9 +591,9 @@ MonoBehaviour:
   m_RendererData: {fileID: 0}
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 1358692111}
   - component: {fileID: 1358692110}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -919,7 +919,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -100
   m_Sprite: {fileID: 21300000, guid: 3e78171e3784a8d4f86e0041dc228930, type: 3}
-  m_Color: {r: 0.44313726, g: 0.39215687, b: 0.2627451, a: 1}
+  m_Color: {r: 0.5377358, g: 0.47250393, b: 0.30691525, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1410,11 +1410,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 96232487}
     m_Modifications:
-    - target: {fileID: 6221623920916412443, guid: 14913fc88b574404480745ee829622d0,
-        type: 3}
-      propertyPath: m_Name
-      value: Time Slider
-      objectReference: {fileID: 0}
     - target: {fileID: 6221623920916412442, guid: 14913fc88b574404480745ee829622d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1519,6 +1514,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221623920916412443, guid: 14913fc88b574404480745ee829622d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Time Slider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14913fc88b574404480745ee829622d0, type: 3}
