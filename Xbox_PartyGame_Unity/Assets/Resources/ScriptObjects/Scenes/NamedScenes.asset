@@ -23,3 +23,5 @@ MonoBehaviour:
     sceneName: Cereal
   - sceneEnumName: 4
     sceneName: BeatMeat
+  - sceneEnumName: 5
+    sceneName: Vault

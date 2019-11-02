@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2821,7 +2821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dropdown: {fileID: 789108540}
-  minigameScenes: 030000000400000000000000
+  minigameScenes: 03000000040000000500000000000000
   m_scoreTexts:
   - {fileID: 485915892}
   - {fileID: 1359376744}

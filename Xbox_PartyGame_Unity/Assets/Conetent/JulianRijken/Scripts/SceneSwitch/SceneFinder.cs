@@ -34,7 +34,8 @@ public enum SceneEnumName
     ControllerSetup,
     MinigamesHome,
     Cereal,
-    BeatTheMeat
+    BeatTheMeat,
+    Vault
 }
 
 [System.Serializable]

@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Conetent/Jurian/Scenes/BeatMeat.unity
     guid: 89b56f24989fe6e4d886e749c2b23816
+  - enabled: 1
+    path: Assets/Conetent/Jurian/Scenes/Vault.unity
+    guid: a97f24ad9a9c105489251434d44d8991
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 382a97c429390ff4994cc841339a2a6d,
       type: 2}
