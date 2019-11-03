@@ -12,6 +12,7 @@ public class VaultInput : MonoBehaviour
     [SerializeField, Tooltip("Player Integer")] private int m_player;
     [SerializeField] private GameObject stand;
     [SerializeField] private Sprite Xbutton, Ybutton, AButton, Bbutton;
+    [SerializeField] private SpriteRenderer ButtonToPress;
 
     [SerializeField, Header("Debug")] private ButtonSelection Button;
 
@@ -19,7 +20,6 @@ public class VaultInput : MonoBehaviour
     private bool GameRunning;
     private double delta;
     private Dictionary<ButtonSelection, Sprite> buttonText;
-    private SpriteRenderer spriteRenderer;
     private bool done;
 
     private Sprite sprite;
@@ -37,17 +37,16 @@ public class VaultInput : MonoBehaviour
         buttonText.Add(ButtonSelection.West, Xbutton);
 
         done = false;
-
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         SelectButton();
     }
 
     IEnumerator StandFall()
     {
+        int x = Random.Range(0, 2);
 
         for (int i = 0; i < 10; i++)
         {
-            stand.transform.rotation = Quaternion.Lerp(stand.transform.rotation, Quaternion.Euler(0, 0, 85), .1f);
+            stand.transform.rotation = Quaternion.Lerp(stand.transform.rotation, Quaternion.Euler(0, 0, x == 0 ? -120 : 120), .1f);
             yield return new WaitForSeconds(.005f);
         }
     }
@@ -56,10 +55,9 @@ public class VaultInput : MonoBehaviour
     {
         delta = 0;
         Button = (ButtonSelection)Random.Range((int)ButtonSelection.North, (int)ButtonSelection.West + 1);
-        print(Button);
         if (buttonText.TryGetValue(Button, out sprite))
         {
-            spriteRenderer.sprite = sprite;
+            ButtonToPress.sprite = sprite;
         }
     }
 
