@@ -14,6 +14,7 @@ public class BTMInput : MonoBehaviour
     [SerializeField] private float m_tick;
 
     private bool cancel;
+    private bool done;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class BTMInput : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             if (cancel) {cancel = false; break;}
-            m_hammer.transform.rotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -30), m_tick);
+            m_hammer.transform.rotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -40), m_tick);
             yield return new WaitForSeconds(.005f);
         }
     }
@@ -43,19 +44,19 @@ public class BTMInput : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(30,20, 1), m_tick);
+            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(1.3f,1, 1), m_tick);
             yield return new WaitForSeconds(.005f);
         }
         for (int i = 0; i < 10; i++)
         {
-            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(22, 22, 1), m_tick); 
+            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(1, 1, 1), m_tick); 
             yield return new WaitForSeconds(.005f);
         }
     }
 
     private void buttonSouthPressed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !done)
         {
             m_beats += 1;
             StartCoroutine(Hammer_movement());
@@ -69,8 +70,9 @@ public class BTMInput : MonoBehaviour
 
     private void Update()
     {
-        if (m_beats >= 60)
+        if (m_beats >= 20)
         {
+            done = true;
             MiniGameManager.SetPlayerDone(m_player);
         }
     }
