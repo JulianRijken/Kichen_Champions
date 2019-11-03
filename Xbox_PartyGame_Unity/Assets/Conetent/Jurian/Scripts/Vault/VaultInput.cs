@@ -57,7 +57,8 @@ public class VaultInput : MonoBehaviour
         Button = (ButtonSelection)Random.Range((int)ButtonSelection.North, (int)ButtonSelection.West + 1);
         if (buttonText.TryGetValue(Button, out sprite))
         {
-            ButtonToPress.sprite = sprite;
+            if (ButtonToPress != null && ButtonToPress.sprite != null)
+                ButtonToPress.sprite = sprite;
         }
     }
 
