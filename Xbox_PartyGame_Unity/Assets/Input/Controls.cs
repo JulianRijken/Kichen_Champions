@@ -57,6 +57,14 @@ public class Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Exit To Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""41b0e420-94e6-47fe-b12e-0cfe288228de"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -112,6 +120,17 @@ public class Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Button West"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0da30a01-e2ab-4e81-bf15-8c90fc67e3c9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit To Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -487,6 +506,7 @@ public class Controls : IInputActionCollection, IDisposable
         m_Player_ButtonEast = m_Player.FindAction("Button East", throwIfNotFound: true);
         m_Player_ButtonNorth = m_Player.FindAction("Button North", throwIfNotFound: true);
         m_Player_ButtonWest = m_Player.FindAction("Button West", throwIfNotFound: true);
+        m_Player_ExitToMenu = m_Player.FindAction("Exit To Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -554,6 +574,7 @@ public class Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_ButtonEast;
     private readonly InputAction m_Player_ButtonNorth;
     private readonly InputAction m_Player_ButtonWest;
+    private readonly InputAction m_Player_ExitToMenu;
     public struct PlayerActions
     {
         private Controls m_Wrapper;
@@ -563,6 +584,7 @@ public class Controls : IInputActionCollection, IDisposable
         public InputAction @ButtonEast => m_Wrapper.m_Player_ButtonEast;
         public InputAction @ButtonNorth => m_Wrapper.m_Player_ButtonNorth;
         public InputAction @ButtonWest => m_Wrapper.m_Player_ButtonWest;
+        public InputAction @ExitToMenu => m_Wrapper.m_Player_ExitToMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -587,6 +609,9 @@ public class Controls : IInputActionCollection, IDisposable
                 ButtonWest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonWest;
                 ButtonWest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonWest;
                 ButtonWest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnButtonWest;
+                ExitToMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitToMenu;
+                ExitToMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitToMenu;
+                ExitToMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitToMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -606,6 +631,9 @@ public class Controls : IInputActionCollection, IDisposable
                 ButtonWest.started += instance.OnButtonWest;
                 ButtonWest.performed += instance.OnButtonWest;
                 ButtonWest.canceled += instance.OnButtonWest;
+                ExitToMenu.started += instance.OnExitToMenu;
+                ExitToMenu.performed += instance.OnExitToMenu;
+                ExitToMenu.canceled += instance.OnExitToMenu;
             }
         }
     }
@@ -730,6 +758,7 @@ public class Controls : IInputActionCollection, IDisposable
         void OnButtonEast(InputAction.CallbackContext context);
         void OnButtonNorth(InputAction.CallbackContext context);
         void OnButtonWest(InputAction.CallbackContext context);
+        void OnExitToMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

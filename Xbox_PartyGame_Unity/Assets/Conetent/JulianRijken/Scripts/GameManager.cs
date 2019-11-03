@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public static ScoreCenter ScoreCenter { get => m_instance.m_scoreCenter; }
 
 
+    private Controls controls;
+
+
     private void Awake()
     {
         if (m_instance == null)
@@ -22,11 +26,22 @@ public class GameManager : MonoBehaviour
 
             m_notificationCenter = new NotificationCenter();
             m_scoreCenter = new ScoreCenter();
+
+            controls = new Controls();
+
+            controls.Enable();
+
+            controls.Player.ExitToMenu.performed += OnExitToMenu;
         }
         else if (this != m_instance)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnExitToMenu(InputAction.CallbackContext context)
+    {
+        SceneLoader.LoadSceneAsync(SceneEnumName.MainMenu);
     }
 
 }

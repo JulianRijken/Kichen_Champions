@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreCenter : MonoBehaviour
+public class ScoreCenter
 {
 
     private Dictionary<int, PlayerData> m_playerData;
+    private int m_gameLength = 5;
 
     public void CreateNewPlayerData(int playerCount)
     {
@@ -17,6 +18,17 @@ public class ScoreCenter : MonoBehaviour
         {
             m_playerData.Add(i, new PlayerData());
         }
+    }
+
+    public int GetGameLength()
+    {
+        return m_gameLength;
+    }
+
+    public void SetGameLength(int gameLengh)
+    {
+        Debug.Log("Game length Set: " + gameLengh);
+        m_gameLength = gameLengh;
     }
 
     public PlayerData GetPlayerData(int player)

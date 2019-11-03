@@ -25,3 +25,7 @@ MonoBehaviour:
     sceneName: BeatMeat
   - sceneEnumName: 5
     sceneName: Vault
+  - sceneEnumName: 6
+    sceneName: GameSettings
+  - sceneEnumName: 7
+    sceneName: EindScreen

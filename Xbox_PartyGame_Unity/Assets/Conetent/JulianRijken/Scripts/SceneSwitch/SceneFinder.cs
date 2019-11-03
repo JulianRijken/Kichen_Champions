@@ -35,7 +35,9 @@ public enum SceneEnumName
     MinigamesHome,
     Cereal,
     BeatTheMeat,
-    Vault
+    Vault,
+    GameSettings,
+    EindScreen
 }
 
 [System.Serializable]

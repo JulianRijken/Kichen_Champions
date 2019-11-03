@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Conetent/JulianRijken/Scenes/Setup/MinigameHome.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Conetent/JulianRijken/Scenes/Setup/GameSettings.unity
+    guid: eac26339e3eaf8f4cb311cbdb9710062
+  - enabled: 1
+    path: Assets/Conetent/JulianRijken/Scenes/Setup/EindScreen.unity
+    guid: 3e0a7119ab59bf04c985ad2179226975
+  - enabled: 1
     path: Assets/Conetent/JulianRijken/Scenes/Minigames/Cereal.unity
     guid: 006e8ff26f2b4e143aa9faccfec5d49b
   - enabled: 1

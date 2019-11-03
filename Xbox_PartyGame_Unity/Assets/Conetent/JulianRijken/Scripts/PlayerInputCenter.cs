@@ -20,7 +20,10 @@ namespace Julian.InputSystem
         {
             get
             {
-                return Instance.m_selectedPlayerCount;
+                if (Instance != null)
+                    return Instance.m_selectedPlayerCount;
+                else
+                    return 0;
             }
             set
             {
