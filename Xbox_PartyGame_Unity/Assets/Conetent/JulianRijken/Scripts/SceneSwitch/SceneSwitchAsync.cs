@@ -66,6 +66,7 @@ public class SceneSwitchAsync : MonoBehaviour
     private void OpeningAnimationDone()
     {
         m_swtiching = false;
+        SceneLoader.FireSceneSwitchDone();
     }
 
 }

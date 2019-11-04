@@ -22,9 +22,15 @@ public static class SceneLoader
         string scene = container.GetSceneName(sceneEnumName);
         OnLoadSceneAsync?.Invoke(scene);
     }
-
     public delegate void LoadSceneAsyncAction(string scene);
     public static event LoadSceneAsyncAction OnLoadSceneAsync;
+
+    public static void FireSceneSwitchDone()
+    {
+        OnSceneSwitched?.Invoke();
+    }
+    public delegate void SceneSwitchedAction();
+    public static event SceneSwitchedAction OnSceneSwitched;
 
 }
 

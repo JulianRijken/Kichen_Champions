@@ -1410,6 +1410,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 96232487}
     m_Modifications:
+    - target: {fileID: 6221623920916412443, guid: 14913fc88b574404480745ee829622d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Time Slider
+      objectReference: {fileID: 0}
     - target: {fileID: 6221623920916412442, guid: 14913fc88b574404480745ee829622d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1514,11 +1519,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6221623920916412443, guid: 14913fc88b574404480745ee829622d0,
-        type: 3}
-      propertyPath: m_Name
-      value: Time Slider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14913fc88b574404480745ee829622d0, type: 3}
