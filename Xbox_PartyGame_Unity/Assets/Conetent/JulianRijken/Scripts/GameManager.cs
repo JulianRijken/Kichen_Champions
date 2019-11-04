@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
             controls.Enable();
 
             controls.Player.ExitToMenu.performed += OnExitToMenu;
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         else if (this != m_instance)
         {
