@@ -29,6 +29,7 @@ public class SliceItInput : MonoBehaviour
         }
         startpos = cucumber.position;
         topos = startpos;
+        done = false;
     }
 
 
@@ -42,7 +43,8 @@ public class SliceItInput : MonoBehaviour
     private void MoveCucumber()
     {
         input = new Vector3(m_MovementInput.x, 0, 0);
-        topos = Vector3.Lerp(startpos, startpos + input, 0);
+        topos = Vector3.Lerp(startpos, startpos + input, Time.deltaTime);
+            
         cucumber.MovePosition(Vector3.Lerp(cucumber.position, topos, Time.deltaTime * 3));
     }
     private void OnDestroy()
