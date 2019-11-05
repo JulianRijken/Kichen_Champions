@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Conetent/Jurian/Scenes/Vault.unity
     guid: a97f24ad9a9c105489251434d44d8991
+  - enabled: 1
+    path: Assets/Conetent/Jurian/Scenes/SliceIt.unity
+    guid: 154dc5bf8d9066644a9010b70c0da9f2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 382a97c429390ff4994cc841339a2a6d,
       type: 2}
