@@ -72,6 +72,7 @@ public class VaultInput : MonoBehaviour
         }
         else if (context.performed && Button != ButtonSelection.North && !done)
         {
+            m_correctPress -= 1;
             SelectButton();
         }
     }
@@ -85,6 +86,7 @@ public class VaultInput : MonoBehaviour
         }
         else if (context.performed && Button != ButtonSelection.East && !done)
         {
+            m_correctPress -= 1;
             SelectButton();
         }
     }
@@ -93,11 +95,11 @@ public class VaultInput : MonoBehaviour
         if (context.performed && Button == ButtonSelection.South && !done)
         {
             m_correctPress += 1;
-            // -- visuals
             SelectButton();
         }
         else if(context.performed && Button != ButtonSelection.South && !done)
         {
+            m_correctPress -= 1;
             SelectButton();
         }
     }
@@ -106,11 +108,11 @@ public class VaultInput : MonoBehaviour
         if (context.performed && Button == ButtonSelection.West && !done)
         {
             m_correctPress += 1;
-            // -- visuals
             SelectButton();
         }
         else if (context.performed && Button != ButtonSelection.West && !done)
         {
+            m_correctPress -= 1;
             SelectButton();
         }
     }

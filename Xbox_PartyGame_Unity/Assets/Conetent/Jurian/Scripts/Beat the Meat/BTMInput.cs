@@ -22,7 +22,15 @@ public class BTMInput : MonoBehaviour
         PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += buttonSouthPressed;
 
     }
-
+    IEnumerator HammerIdle()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            m_hammer.transform.rotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -105), m_tick);
+            m_hammer.transform.position = Vector3.Lerp(m_hammer.transform.position, new Vector3(-42.5f, -28,0), m_tick);
+            yield return new WaitForSeconds(.005f);
+        }
+    }
     IEnumerator Hammer_movement()
     {
         for (int i = 0; i < 10; i++)
@@ -70,9 +78,10 @@ public class BTMInput : MonoBehaviour
 
     private void Update()
     {
-        if (m_beats >= 20)
+        if (m_beats >= 40 && !done)
         {
             done = true;
+            StartCoroutine(HammerIdle());
             MiniGameManager.SetPlayerDone(m_player);
         }
     }
