@@ -15,6 +15,10 @@ public class SliceItInput : MonoBehaviour
     private Vector3 startpos;
     private bool done;
     private Vector3 topos;
+
+    private int slices;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,8 +51,5 @@ public class SliceItInput : MonoBehaviour
         {
             PlayerInputCenter.PlayerInputEvents[m_player].OnMove -= StickMovement;
         }
-    }
-    private void Update()
-    {
     }
 }
