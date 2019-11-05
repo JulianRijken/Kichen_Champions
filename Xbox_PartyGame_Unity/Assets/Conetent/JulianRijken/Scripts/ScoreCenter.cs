@@ -7,6 +7,17 @@ public class ScoreCenter
 
     private Dictionary<int, PlayerData> m_playerData;
     private int m_gameLength = 5;
+    private PlayerData m_winningPlayer;
+
+    public void SetWinningPlayer(PlayerData player)
+    {
+        m_winningPlayer = player;
+    }
+
+    public PlayerData GetWinningPlayer()
+    {
+        return m_winningPlayer;
+    }
 
     public void CreateNewPlayerData(int playerCount)
     {
@@ -16,7 +27,8 @@ public class ScoreCenter
 
         for (int i = 0; i < playerCount; i++)
         {
-            m_playerData.Add(i, new PlayerData());
+
+            m_playerData.Add(i, new PlayerData(0,i));
         }
     }
 
@@ -53,5 +65,12 @@ public class ScoreCenter
 
 public class PlayerData
 {
+    public PlayerData(int score,int player)
+    {
+        m_score = score;
+        m_player = player;
+    }
+
     public int m_score;
+    public int m_player;
 }

@@ -11,6 +11,8 @@ public class MiniGameHome : MonoBehaviour
     [SerializeField] private SceneEnumName[] m_minigameScenes;
     [SerializeField] private TextMeshProUGUI[] m_scoreTexts;
     [SerializeField] private Image[] m_progresImage;
+    [SerializeField] private List<PlayerData> m_checkPlayers;
+    [SerializeField] private GameObject m_suddenDeathText;
 
     [Header("GameSelect")]
     [SerializeField] Sprite[] m_gameSprites;
@@ -39,6 +41,8 @@ public class MiniGameHome : MonoBehaviour
             SceneLoader.LoadScene(SceneEnumName.ControllerSetup);
 
         m_sceneSwitched = false;
+        m_suddenDeathText.SetActive(false);
+
     }
 
     private void OnDestroy()
@@ -61,18 +65,24 @@ public class MiniGameHome : MonoBehaviour
 
         m_dropdown.value = 0;
 
+
+        m_checkPlayers = new List<PlayerData>();
         for (int i = 0; i < m_scoreTexts.Length; i++)
         {
             PlayerData playerData = GameManager.ScoreCenter.GetPlayerData(i);
             if (playerData != null)
             {
                 if (playerData.m_score == GameManager.ScoreCenter.GetGameLength())
-                    OnGameFinish();
+                    m_checkPlayers.Add(playerData);
+
+
 
                 m_scoreTexts[i].text = playerData.m_score + " / " + GameManager.ScoreCenter.GetGameLength().ToString();
                 m_progresImage[i].fillAmount = 0;
             }
         }
+
+        CheckWinner(m_checkPlayers);
 
         m_swichTimer = 0;
         gameSelected = false;
@@ -141,8 +151,21 @@ public class MiniGameHome : MonoBehaviour
         m_sceneSwitched = true;
     }
 
-    private void OnGameFinish()
+
+    private void CheckWinner(List<PlayerData> playerData)
     {
+        if (playerData.Count > 1)
+        {
+            Debug.Log("SuddenDeath");
+            m_suddenDeathText.SetActive(true);
+        }
+        else if (playerData.Count == 1)
+            OnGameFinish(playerData[0]);
+    }
+
+    private void OnGameFinish(PlayerData winner)
+    {
+        GameManager.ScoreCenter.SetWinningPlayer(winner);
         SceneLoader.LoadScene(SceneEnumName.EindScreen);
     }
 
