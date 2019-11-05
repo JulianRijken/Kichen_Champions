@@ -19,15 +19,16 @@ public class BTMInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += buttonSouthPressed;
+        if (PlayerInputCenter.PlayerExists(m_player))
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += buttonSouthPressed;
 
     }
     IEnumerator HammerIdle()
     {
         for (int i = 0; i < 10; i++)
         {
-            m_hammer.transform.rotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -105), m_tick);
-            m_hammer.transform.localPosition = Vector3.Lerp(m_hammer.transform.localPosition, new Vector3(-42.5f, -28,0), m_tick);
+            m_hammer.transform.localRotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -105), 1f);
+            m_hammer.transform.localPosition = Vector3.Lerp(m_hammer.transform.localPosition, new Vector3(-42.5f, -28,0), 1f);
             yield return new WaitForSeconds(.005f);
         }
     }
@@ -73,12 +74,14 @@ public class BTMInput : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth -= buttonSouthPressed;
+        if (PlayerInputCenter.PlayerExists(m_player))
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth -= buttonSouthPressed;
+        
     }
 
     private void Update()
     {
-        if (m_beats >= 40 && !done)
+        if (m_beats >= 50 && !done)
         {
             done = true;
             StartCoroutine(HammerIdle());

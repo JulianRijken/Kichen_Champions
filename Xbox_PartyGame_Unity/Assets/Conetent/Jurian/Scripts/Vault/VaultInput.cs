@@ -26,10 +26,13 @@ public class VaultInput : MonoBehaviour
 
     private void Start()
     {
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonNorth += buttonNorthPressed;
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonEast += buttonEastPressed;
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += buttonSouthPressed;
-        PlayerInputCenter.PlayerInputEvents[m_player].OnButtonWest += buttonWestPressed;
+        if (PlayerInputCenter.PlayerExists(m_player))
+        {
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonNorth += buttonNorthPressed;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonEast += buttonEastPressed;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += buttonSouthPressed;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonWest += buttonWestPressed;
+        }
         buttonText = new Dictionary<ButtonSelection, Sprite>();
         buttonText.Add(ButtonSelection.North, Ybutton);
         buttonText.Add(ButtonSelection.East, Bbutton);
@@ -132,5 +135,17 @@ public class VaultInput : MonoBehaviour
             SelectButton();
         }
         m_correctPress = Mathf.Clamp(m_correctPress, 0, 10);
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerInputCenter.PlayerExists(m_player))
+        {
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonNorth -= buttonNorthPressed;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonEast -= buttonEastPressed;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth -= buttonSouthPressed;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnButtonWest -= buttonWestPressed;
+        }
+
     }
 }

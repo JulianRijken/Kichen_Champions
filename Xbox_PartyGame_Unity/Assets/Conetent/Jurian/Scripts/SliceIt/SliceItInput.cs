@@ -13,6 +13,7 @@ public class SliceItInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scale = 3;
         if (PlayerInputCenter.PlayerExists(m_player))
         {
             PlayerInputCenter.PlayerInputEvents[m_player].OnMove += StickMovement;
