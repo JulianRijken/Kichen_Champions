@@ -43,7 +43,8 @@ public enum SceneEnumName
     BeatTheMeat,
     Vault,
     GameSettings,
-    EindScreen
+    EindScreen,
+    SliceIt
 }
 
 [System.Serializable]

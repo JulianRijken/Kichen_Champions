@@ -29,3 +29,5 @@ MonoBehaviour:
     sceneName: GameSettings
   - sceneEnumName: 7
     sceneName: EindScreen
+  - sceneEnumName: 8
+    sceneName: SliceIt
