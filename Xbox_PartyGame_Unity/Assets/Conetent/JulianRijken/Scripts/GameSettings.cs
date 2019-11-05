@@ -32,8 +32,16 @@ public class GameSettings : MonoBehaviour
     {
         if (m_lenghSlider != null && m_sliderValueText != null)
         {
-            m_selectedValue = Mathf.RoundToInt(m_lenghSlider.value * m_lenghMultiply);
-            m_sliderValueText.text = m_selectedValue.ToString();
+            if (m_lenghSlider.value == 0)
+            {
+                m_selectedValue = 1;
+                m_sliderValueText.text = 1+"";
+            }
+            else
+            {
+                m_selectedValue = Mathf.RoundToInt(m_lenghSlider.value * m_lenghMultiply);
+                m_sliderValueText.text = m_selectedValue.ToString();
+            }
         }
     }
 

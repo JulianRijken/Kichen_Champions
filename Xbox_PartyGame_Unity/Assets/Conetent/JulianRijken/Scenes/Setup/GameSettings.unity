@@ -505,7 +505,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 246916933}
   m_HandleRect: {fileID: 1045121503}
   m_Direction: 0
-  m_MinValue: 1
+  m_MinValue: 0
   m_MaxValue: 5
   m_WholeNumbers: 1
   m_Value: 1
@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 437332386}
   - component: {fileID: 437332385}
   - component: {fileID: 437332384}
+  - component: {fileID: 437332387}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -714,6 +715,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437332382}
   m_CullTransparentMesh: 0
+--- !u!114 &437332387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437332382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14796de7ec3986849a1b2cf3e3bf5aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onClickClip: {fileID: 8300000, guid: 88773d9607ce75d43a88f9f6aefbeed1, type: 3}
+  m_onSelectClip: {fileID: 8300000, guid: 88773d9607ce75d43a88f9f6aefbeed1, type: 3}
+  m_volume: 1
 --- !u!1 &462912036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_lenghSlider: {fileID: 279773787}
-  m_lenghMultiply: 1
+  m_lenghMultiply: 5
   m_sliderValueText: {fileID: 918100514}
 --- !u!4 &1285374492
 Transform:

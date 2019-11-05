@@ -9,6 +9,9 @@ public class ConnectedControllerUI : MonoBehaviour
 {
 
     [SerializeField] private int m_user;
+    [SerializeField] private Color m_activeColor;
+    [SerializeField] private Color m_inActiveColor;
+    [SerializeField] private Image m_image;
 
     void Start()
     {
@@ -28,11 +31,11 @@ public class ConnectedControllerUI : MonoBehaviour
 
         if (userConnected)
         {
-            GetComponent<Image>().color = Color.blue;
+            m_image.color = m_activeColor;
         }
         else
         {
-            GetComponent<Image>().color = Color.gray;
+            m_image.color = m_inActiveColor;
         }
     }
 

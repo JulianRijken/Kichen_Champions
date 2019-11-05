@@ -14,7 +14,7 @@ public class EindScreen : MonoBehaviour
         if (winningPlayer != null)
         {
             int winnerNumber = winningPlayer.m_player + 1;
-            winnerText.text = "Player " + winnerNumber + " Wint!";
+            winnerText.text = "Player " + winnerNumber + " Wins!";
         }
     }
 
