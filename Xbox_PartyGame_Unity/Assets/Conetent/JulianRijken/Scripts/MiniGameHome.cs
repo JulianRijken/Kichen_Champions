@@ -159,13 +159,11 @@ public class MiniGameHome : MonoBehaviour
 
         if (playerData.Count > 1)
         {
-            PlayerData bestPlayer;
             int bestPlayerScore = 0;
             for (int i = 0; i < playerData.Count; i++)
             {
-                if (playerData[i].m_player > bestPlayerScore)
+                if (playerData[i].m_score > bestPlayerScore)
                 {
-                    bestPlayer = playerData[i];
                     bestPlayerScore = playerData[i].m_score;
                 }
             }
@@ -175,8 +173,6 @@ public class MiniGameHome : MonoBehaviour
             {
                 if (playerData[i].m_score == bestPlayerScore)
                     bestPlayers.Add(playerData[i]);
-
-
             }
 
             if (bestPlayers.Count > 1)
