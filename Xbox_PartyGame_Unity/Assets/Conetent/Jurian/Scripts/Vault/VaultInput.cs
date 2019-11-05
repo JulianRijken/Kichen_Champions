@@ -131,5 +131,6 @@ public class VaultInput : MonoBehaviour
         {
             SelectButton();
         }
+        m_correctPress = Mathf.Clamp(m_correctPress, 0, 10);
     }
 }
