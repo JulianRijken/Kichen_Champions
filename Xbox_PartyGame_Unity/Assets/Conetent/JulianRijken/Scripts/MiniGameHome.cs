@@ -13,6 +13,7 @@ public class MiniGameHome : MonoBehaviour
     [SerializeField] private Image[] m_progresImage;
     [SerializeField] private List<PlayerData> m_checkPlayers;
     [SerializeField] private GameObject m_suddenDeathText;
+    
 
     [Header("GameSelect")]
     [SerializeField] Sprite[] m_gameSprites;
@@ -72,9 +73,8 @@ public class MiniGameHome : MonoBehaviour
             PlayerData playerData = GameManager.ScoreCenter.GetPlayerData(i);
             if (playerData != null)
             {
-                if (playerData.m_score == GameManager.ScoreCenter.GetGameLength())
+                if (playerData.m_score >= GameManager.ScoreCenter.GetGameLength())
                     m_checkPlayers.Add(playerData);
-
 
 
                 m_scoreTexts[i].text = playerData.m_score + " / " + GameManager.ScoreCenter.GetGameLength().ToString();
@@ -154,10 +154,40 @@ public class MiniGameHome : MonoBehaviour
 
     private void CheckWinner(List<PlayerData> playerData)
     {
+
+
+
         if (playerData.Count > 1)
         {
-            Debug.Log("SuddenDeath");
-            m_suddenDeathText.SetActive(true);
+            PlayerData bestPlayer;
+            int bestPlayerScore = 0;
+            for (int i = 0; i < playerData.Count; i++)
+            {
+                if (playerData[i].m_player > bestPlayerScore)
+                {
+                    bestPlayer = playerData[i];
+                    bestPlayerScore = playerData[i].m_score;
+                }
+            }
+
+            List<PlayerData> bestPlayers = new List<PlayerData>();
+            for (int i = 0; i < playerData.Count; i++)
+            {
+                if (playerData[i].m_score == bestPlayerScore)
+                    bestPlayers.Add(playerData[i]);
+
+
+            }
+
+            if (bestPlayers.Count > 1)
+            {
+                Debug.Log("SuddenDeath");
+                m_suddenDeathText.SetActive(true);
+            }
+            else if(bestPlayers.Count == 1)
+            {
+                OnGameFinish(bestPlayers[0]);
+            }
         }
         else if (playerData.Count == 1)
             OnGameFinish(playerData[0]);
