@@ -12,6 +12,7 @@ public class BTMInput : MonoBehaviour
     [SerializeField] private GameObject m_meat;
 
     [SerializeField] private float m_tick;
+    [SerializeField] private Transform position;
 
     private bool cancel;
     private bool done;
@@ -28,7 +29,7 @@ public class BTMInput : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             m_hammer.transform.localRotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -105), 1f);
-            m_hammer.transform.localPosition = Vector3.Lerp(m_hammer.transform.localPosition, new Vector3(-42.5f, -28,0), 1f);
+            m_hammer.transform.localPosition = Vector3.Lerp(position.localPosition, new Vector3(-42.5f, -28,0), 1f);
             yield return new WaitForSeconds(.005f);
         }
     }
