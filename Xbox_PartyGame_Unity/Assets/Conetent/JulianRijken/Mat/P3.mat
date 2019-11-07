@@ -39,6 +39,6 @@ Material:
     - PixelSnap: 0
     - _EnableExternalAlpha: 0
     m_Colors:
-    - _Color: {r: 0.745283, g: 0.58829844, b: 0.094918124, a: 1}
+    - _Color: {r: 0.7830189, g: 0.6311867, b: 0.15881987, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
