@@ -2824,7 +2824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dropdown: {fileID: 789108540}
-  m_minigameScenes: 03000000050000000400000008000000
+  m_minigameScenes: 0300000005000000040000000800000009000000
   m_scoreTexts:
   - {fileID: 7712289506720708324}
   - {fileID: 688967284}
@@ -2839,6 +2839,7 @@ MonoBehaviour:
   m_gameSprites:
   - {fileID: 21300000, guid: 8ef8c9d881f4d404d8b28f2c4b731a63, type: 3}
   - {fileID: 21300000, guid: 815a4414351a4eb43a0de84ca79d0bc2, type: 3}
+  - {fileID: 21300000, guid: f728a3936b56a8644bab4d0aab983b13, type: 3}
   - {fileID: 21300000, guid: f728a3936b56a8644bab4d0aab983b13, type: 3}
   - {fileID: 21300000, guid: f728a3936b56a8644bab4d0aab983b13, type: 3}
   m_gameSpriteImage: {fileID: 1546661759}

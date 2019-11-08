@@ -44,7 +44,8 @@ public enum SceneEnumName
     Vault,
     GameSettings,
     EindScreen,
-    SliceIt
+    SliceIt,
+    SaltTheMeat
 }
 
 [System.Serializable]

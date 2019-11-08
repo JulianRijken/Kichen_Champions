@@ -65,6 +65,22 @@ public class Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Trigger Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""b877a5cc-b11a-4150-8e7c-a654d8a8c43c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Trigger Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""83b736a5-a034-4ddf-9229-2de5c32c56c4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -131,6 +147,28 @@ public class Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Exit To Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eae89bdc-1a9c-4f0e-8ddf-a24e33c2712d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Trigger Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4a62f19-a1b1-4f5c-9dce-e0e373fd6194"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Trigger Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -507,6 +545,8 @@ public class Controls : IInputActionCollection, IDisposable
         m_Player_ButtonNorth = m_Player.FindAction("Button North", throwIfNotFound: true);
         m_Player_ButtonWest = m_Player.FindAction("Button West", throwIfNotFound: true);
         m_Player_ExitToMenu = m_Player.FindAction("Exit To Menu", throwIfNotFound: true);
+        m_Player_TriggerLeft = m_Player.FindAction("Trigger Left", throwIfNotFound: true);
+        m_Player_TriggerRight = m_Player.FindAction("Trigger Right", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -575,6 +615,8 @@ public class Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_ButtonNorth;
     private readonly InputAction m_Player_ButtonWest;
     private readonly InputAction m_Player_ExitToMenu;
+    private readonly InputAction m_Player_TriggerLeft;
+    private readonly InputAction m_Player_TriggerRight;
     public struct PlayerActions
     {
         private Controls m_Wrapper;
@@ -585,6 +627,8 @@ public class Controls : IInputActionCollection, IDisposable
         public InputAction @ButtonNorth => m_Wrapper.m_Player_ButtonNorth;
         public InputAction @ButtonWest => m_Wrapper.m_Player_ButtonWest;
         public InputAction @ExitToMenu => m_Wrapper.m_Player_ExitToMenu;
+        public InputAction @TriggerLeft => m_Wrapper.m_Player_TriggerLeft;
+        public InputAction @TriggerRight => m_Wrapper.m_Player_TriggerRight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -612,6 +656,12 @@ public class Controls : IInputActionCollection, IDisposable
                 ExitToMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitToMenu;
                 ExitToMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitToMenu;
                 ExitToMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitToMenu;
+                TriggerLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerLeft;
+                TriggerLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerLeft;
+                TriggerLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerLeft;
+                TriggerRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerRight;
+                TriggerRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerRight;
+                TriggerRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerRight;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -634,6 +684,12 @@ public class Controls : IInputActionCollection, IDisposable
                 ExitToMenu.started += instance.OnExitToMenu;
                 ExitToMenu.performed += instance.OnExitToMenu;
                 ExitToMenu.canceled += instance.OnExitToMenu;
+                TriggerLeft.started += instance.OnTriggerLeft;
+                TriggerLeft.performed += instance.OnTriggerLeft;
+                TriggerLeft.canceled += instance.OnTriggerLeft;
+                TriggerRight.started += instance.OnTriggerRight;
+                TriggerRight.performed += instance.OnTriggerRight;
+                TriggerRight.canceled += instance.OnTriggerRight;
             }
         }
     }
@@ -759,6 +815,8 @@ public class Controls : IInputActionCollection, IDisposable
         void OnButtonNorth(InputAction.CallbackContext context);
         void OnButtonWest(InputAction.CallbackContext context);
         void OnExitToMenu(InputAction.CallbackContext context);
+        void OnTriggerLeft(InputAction.CallbackContext context);
+        void OnTriggerRight(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

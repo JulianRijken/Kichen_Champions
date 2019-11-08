@@ -31,3 +31,5 @@ MonoBehaviour:
     sceneName: EindScreen
   - sceneEnumName: 8
     sceneName: SliceIt
+  - sceneEnumName: 9
+    sceneName: MeatSalt

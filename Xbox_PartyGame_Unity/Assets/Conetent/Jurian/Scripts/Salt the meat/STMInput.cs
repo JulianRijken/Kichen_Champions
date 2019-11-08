@@ -11,7 +11,12 @@ public class STMInput : MonoBehaviour
     [SerializeField] private ParticleSystem Salt;
 
     private Transform saltAnchor;
-    private int loopAmount;
+    private int Points;
+    private bool Left, Right;
+    private ParticleSystem.EmissionModule emission;
+    private bool Cancel;
+    private bool done;
+
     IEnumerator Move()
     {
         for (int i = 0; i < 100; ++i)
@@ -24,24 +29,50 @@ public class STMInput : MonoBehaviour
             yield return new WaitForEndOfFrame();
             saltBottle.transform.localPosition = Vector3.MoveTowards(saltBottle.transform.localPosition, new Vector3(1.47f, 1.32f, 0), 0.02f);
         }
-        StartCoroutine(Move());
+        if (!done)
+            StartCoroutine(Move());
     }
 
-    private void OnLeftTrigger(InputAction.CallbackContext conext)
+    IEnumerator EnableSalt()
     {
-
+        emission.enabled = true;
+        if (Cancel) { Cancel = false; yield break; }
+        yield return new WaitForSeconds(.2f);
+        if (Cancel) { Cancel = false; yield break; }
+        emission.enabled = false;
+        
     }
 
-    private void OnRightTrigger(InputAction.CallbackContext conext)
+    private void OnLeftTrigger(InputAction.CallbackContext context)
     {
+        if (context.performed && !Left && !done)
+        {
+            Left = true;
+            Right = false;
+            Points += 1;
+            StartCoroutine(EnableSalt());
+            Cancel = true;
+        }
+    }
 
+    private void OnRightTrigger(InputAction.CallbackContext context)
+    {
+        if (context.performed && !Right && !done)
+        {
+            Right = true;
+            Left = false;
+            Points += 1;
+            StartCoroutine(EnableSalt());
+            Cancel = true;
+        }
     }
 
     private void Start()
     {
-        loopAmount = 100;
         StartCoroutine(Move());
+        
         saltAnchor = saltBottle.transform.Find("Emiter pos");
+        emission = Salt.emission;
 
         if (PlayerInputCenter.PlayerExists(m_player))
         {
@@ -53,6 +84,12 @@ public class STMInput : MonoBehaviour
     private void Update()
     {
         Salt.gameObject.transform.position = saltAnchor.transform.position;
+
+        if (Points == 60 && !done)
+        {
+            done = true;
+            MiniGameManager.SetPlayerDone(m_player);
+        }
     }
 
     private void OnDestroy()
