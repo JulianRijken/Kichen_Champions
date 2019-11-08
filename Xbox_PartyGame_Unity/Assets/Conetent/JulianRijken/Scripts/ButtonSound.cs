@@ -26,6 +26,7 @@ public class ButtonSound : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (m_button != null)
         m_button.onClick.RemoveListener(() => OnClick());
     }
 
