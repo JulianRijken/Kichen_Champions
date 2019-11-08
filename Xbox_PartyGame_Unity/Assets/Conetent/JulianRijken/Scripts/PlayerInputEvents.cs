@@ -22,14 +22,14 @@ namespace Julian.InputSystem
             OnButtonNorth?.Invoke(context);
         }
         public delegate void ButtonNorthAction(InputAction.CallbackContext context);
-        public event ButtonSouthAction OnButtonNorth;
+        public event ButtonNorthAction OnButtonNorth;
 
         public void FireButtonEast(InputAction.CallbackContext context)
         {
             OnButtonEast?.Invoke(context);
         }
         public delegate void ButtonEastAction(InputAction.CallbackContext context);
-        public event ButtonSouthAction OnButtonEast;
+        public event ButtonEastAction OnButtonEast;
 
         public void FireButtonSouth(InputAction.CallbackContext context)
         {
@@ -43,7 +43,23 @@ namespace Julian.InputSystem
             OnButtonWest?.Invoke(context);
         }
         public delegate void ButtonWestAction(InputAction.CallbackContext context);
-        public event ButtonSouthAction OnButtonWest;
+        public event ButtonWestAction OnButtonWest;
+
+        public void FireLeftTrigger(InputAction.CallbackContext context)
+        {
+            OnLeftTrigger?.Invoke(context);
+        }
+
+        public delegate void LeftTriggerAction(InputAction.CallbackContext context);
+        public event LeftTriggerAction OnLeftTrigger;
+
+        public void FireRightTrigger(InputAction.CallbackContext context)
+        {
+            OnRightTrigger?.Invoke(context);
+        }
+
+        public delegate void RightTriggerAction(InputAction.CallbackContext context);
+        public event RightTriggerAction OnRightTrigger;
 
         public void OnDeviceLost()
         {

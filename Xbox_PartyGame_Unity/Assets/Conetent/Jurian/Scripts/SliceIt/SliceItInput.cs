@@ -8,6 +8,8 @@ public class SliceItInput : MonoBehaviour
 {
     [SerializeField, Header("Required")] private int m_player;
     [SerializeField] private GameObject cucumber;
+    [SerializeField] private Transform spawnpoint;
+    [SerializeField] private GameObject cucumberclone;
 
     private float scale;
     private Vector2 m_MovementInput;
@@ -31,6 +33,11 @@ public class SliceItInput : MonoBehaviour
         slices = 0;
     }
 
+    IEnumerator destroyClone(GameObject x)
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(x);
+    }
 
     private void StickMovement(InputAction.CallbackContext conext)
     {
@@ -66,9 +73,12 @@ public class SliceItInput : MonoBehaviour
 
         if (AddPoint)
         {
-            Debug.Log("sliced");
+            GameObject clone = Instantiate(cucumberclone);
+            clone.transform.position = spawnpoint.position;
+            
             slices += 1;
             AddPoint = false;
+            StartCoroutine(destroyClone(clone));
         }
 
         if (slices == 30 && !done)

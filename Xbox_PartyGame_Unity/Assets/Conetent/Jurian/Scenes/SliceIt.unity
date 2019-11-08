@@ -303,6 +303,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: 0
   cucumber: {fileID: 735497593}
+  spawnpoint: {fileID: 677734069}
+  cucumberclone: {fileID: 5825548757311542342, guid: e827008fb8168714580e1b80142afd63,
+    type: 3}
 --- !u!4 &110924101
 Transform:
   m_ObjectHideFlags: 0
@@ -317,6 +320,7 @@ Transform:
   - {fileID: 1000437875}
   - {fileID: 735497594}
   - {fileID: 392452988}
+  - {fileID: 677734069}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -402,6 +406,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &132562750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132562751}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &132562751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132562750}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1335984843}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &206053591
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: 2
   cucumber: {fileID: 1387797060}
+  spawnpoint: {fileID: 718851444}
+  cucumberclone: {fileID: 5825548757311542342, guid: e827008fb8168714580e1b80142afd63,
+    type: 3}
 --- !u!4 &206053593
 Transform:
   m_ObjectHideFlags: 0
@@ -447,6 +484,7 @@ Transform:
   - {fileID: 470496431}
   - {fileID: 623890129}
   - {fileID: 1387797063}
+  - {fileID: 718851444}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -868,7 +906,6 @@ GameObject:
   m_Component:
   - component: {fileID: 441977493}
   - component: {fileID: 441977492}
-  - component: {fileID: 441977491}
   m_Layer: 0
   m_Name: Cucumber
   m_TagString: Untagged
@@ -876,27 +913,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &441977491
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441977490}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!212 &441977492
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1126,6 +1142,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &677734068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 677734069}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &677734069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677734068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 110924101}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &718851443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718851444}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718851444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718851443}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206053593}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &734241149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1245,7 +1321,6 @@ GameObject:
   m_Component:
   - component: {fileID: 735497594}
   - component: {fileID: 735497595}
-  - component: {fileID: 735497596}
   m_Layer: 0
   m_Name: Cucumber
   m_TagString: Untagged
@@ -1318,27 +1393,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &735497596
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735497593}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!1 &926734037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,7 +1518,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 90.329994
   m_PointLightOuterAngle: 133.4
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 18.634401
+  m_PointLightOuterRadius: 21.931017
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -1484,7 +1538,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979472500}
-  m_LocalRotation: {x: 0, y: 0, z: 0.9996922, w: 0.024809929}
+  m_LocalRotation: {x: 0, y: 0, z: 0.999649, w: 0.026493443}
   m_LocalPosition: {x: 0.08, y: 9.83, z: -7.261383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1666,7 +1720,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1213150923}
   - component: {fileID: 1213150922}
-  - component: {fileID: 1213150921}
   m_Layer: 0
   m_Name: Cucumber
   m_TagString: Untagged
@@ -1674,27 +1727,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &1213150921
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213150920}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!212 &1213150922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1791,6 +1823,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: 3
   cucumber: {fileID: 1213150920}
+  spawnpoint: {fileID: 2104399272}
+  cucumberclone: {fileID: 5825548757311542342, guid: e827008fb8168714580e1b80142afd63,
+    type: 3}
 --- !u!4 &1249431420
 Transform:
   m_ObjectHideFlags: 0
@@ -1805,6 +1840,7 @@ Transform:
   - {fileID: 2027541835}
   - {fileID: 116479285}
   - {fileID: 1213150923}
+  - {fileID: 2104399272}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1839,6 +1875,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: 1
   cucumber: {fileID: 441977490}
+  spawnpoint: {fileID: 132562751}
+  cucumberclone: {fileID: 5825548757311542342, guid: e827008fb8168714580e1b80142afd63,
+    type: 3}
 --- !u!4 &1335984843
 Transform:
   m_ObjectHideFlags: 0
@@ -1853,6 +1892,7 @@ Transform:
   - {fileID: 926734038}
   - {fileID: 76750091}
   - {fileID: 441977493}
+  - {fileID: 132562751}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1866,7 +1906,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1387797063}
   - component: {fileID: 1387797062}
-  - component: {fileID: 1387797061}
   m_Layer: 0
   m_Name: Cucumber
   m_TagString: Untagged
@@ -1874,27 +1913,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &1387797061
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387797060}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!212 &1387797062
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2015,9 +2033,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: c52b164913c563f45b49845f9495f20b, type: 3}
-  m_Color: {r: 0.8301887, g: 0.778845, b: 0.3250267, a: 1}
+  m_Color: {r: 0.26165894, g: 0.5042385, b: 0.5283019, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2277,3 +2295,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2104399271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2104399272}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2104399272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104399271}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1249431420}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
