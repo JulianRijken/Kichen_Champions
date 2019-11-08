@@ -13,7 +13,6 @@ public class STMInput : MonoBehaviour
     private Transform saltAnchor;
     private int Points;
     private bool Left, Right;
-    private ParticleSystem.EmissionModule emission;
     private bool Cancel;
     private bool done;
 
@@ -35,18 +34,19 @@ public class STMInput : MonoBehaviour
 
     IEnumerator EnableSalt()
     {
-        emission.enabled = true;
+        Salt.Play();
         if (Cancel) { Cancel = false; yield break; }
         yield return new WaitForSeconds(.2f);
         if (Cancel) { Cancel = false; yield break; }
-        emission.enabled = false;
-        
+        Salt.Stop();
+
     }
 
     private void OnLeftTrigger(InputAction.CallbackContext context)
     {
         if (context.performed && !Left && !done)
         {
+            Debug.Log("LeftTrigger");
             Left = true;
             Right = false;
             Points += 1;
@@ -59,6 +59,7 @@ public class STMInput : MonoBehaviour
     {
         if (context.performed && !Right && !done)
         {
+            Debug.Log("RightTrigger");
             Right = true;
             Left = false;
             Points += 1;
@@ -72,7 +73,9 @@ public class STMInput : MonoBehaviour
         StartCoroutine(Move());
         
         saltAnchor = saltBottle.transform.Find("Emiter pos");
-        emission = Salt.emission;
+        Left = false;
+        Right = true;
+        Salt.Stop();
 
         if (PlayerInputCenter.PlayerExists(m_player))
         {
