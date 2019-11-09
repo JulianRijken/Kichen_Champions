@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Conetent/Jurian/Scenes/MeatSalt.unity
     guid: f68aa1aef80b2fd49bceb66f03f77521
+  - enabled: 1
+    path: Assets/Conetent/JulianRijken/Scenes/Minigames/TapeTheHole.unity
+    guid: e74bffef76cfe3d4d8d96238bd33b511
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 382a97c429390ff4994cc841339a2a6d,
       type: 2}

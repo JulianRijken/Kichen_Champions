@@ -33,3 +33,5 @@ MonoBehaviour:
     sceneName: SliceIt
   - sceneEnumName: 9
     sceneName: MeatSalt
+  - sceneEnumName: 10
+    sceneName: TapeTheHole
