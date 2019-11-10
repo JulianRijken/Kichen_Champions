@@ -2842,7 +2842,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d9c0df76aad913b438c0a8cefc6239f6, type: 3}
   - {fileID: 21300000, guid: 4ca0bf0e5cd8db64b9f4ebe22265b8e4, type: 3}
   - {fileID: 21300000, guid: d9c0df76aad913b438c0a8cefc6239f6, type: 3}
-  - {fileID: 21300000, guid: d9c0df76aad913b438c0a8cefc6239f6, type: 3}
+  - {fileID: 21300000, guid: c99fee0415396154d89f7d4c492876f1, type: 3}
   m_gameSpriteImage: {fileID: 1546661759}
   tickClip: {fileID: 8300000, guid: 63f3660ad62271b44a9005eb092b26f5, type: 3}
   m_tickSource: {fileID: 1384005588}
