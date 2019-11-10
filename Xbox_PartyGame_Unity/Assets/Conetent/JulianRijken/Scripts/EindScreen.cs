@@ -2,23 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class EindScreen : MonoBehaviour
 {
 
-    [SerializeField] private TextMeshProUGUI winnerText;
+    [SerializeField] private Sprite[] winnerSprites;
+    [SerializeField] private Image winnerImage;
+
+    private Controls controls;
+
+    private void Awake()
+    {
+        controls = new Controls();
+        controls.Player.Start.performed += Exit;
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDestroy()
+    {
+        controls.Player.Start.performed -= Exit;
+        controls.Disable();
+    }
 
     private void Start()
     {
         PlayerData winningPlayer = GameManager.ScoreCenter.GetWinningPlayer();
         if (winningPlayer != null)
         {
-            int winnerNumber = winningPlayer.m_player + 1;
-            winnerText.text = "Player " + winnerNumber + " Wins!";
+            if (winningPlayer.m_player < winnerSprites.Length)
+                winnerImage.sprite = winnerSprites[winningPlayer.m_player];
         }
     }
 
-    public void Exit()
+    private void Exit(InputAction.CallbackContext context)
     {
         SceneLoader.LoadSceneAsync(SceneEnumName.MainMenu);
     }

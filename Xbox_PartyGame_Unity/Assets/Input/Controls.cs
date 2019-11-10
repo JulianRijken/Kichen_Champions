@@ -81,6 +81,14 @@ public class Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""45f7090d-6a81-4adb-b43a-ed63108619d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -169,6 +177,17 @@ public class Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Trigger Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""619a7fd3-596b-4001-a539-df8c9320982a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -547,6 +566,7 @@ public class Controls : IInputActionCollection, IDisposable
         m_Player_ExitToMenu = m_Player.FindAction("Exit To Menu", throwIfNotFound: true);
         m_Player_TriggerLeft = m_Player.FindAction("Trigger Left", throwIfNotFound: true);
         m_Player_TriggerRight = m_Player.FindAction("Trigger Right", throwIfNotFound: true);
+        m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -617,6 +637,7 @@ public class Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_ExitToMenu;
     private readonly InputAction m_Player_TriggerLeft;
     private readonly InputAction m_Player_TriggerRight;
+    private readonly InputAction m_Player_Start;
     public struct PlayerActions
     {
         private Controls m_Wrapper;
@@ -629,6 +650,7 @@ public class Controls : IInputActionCollection, IDisposable
         public InputAction @ExitToMenu => m_Wrapper.m_Player_ExitToMenu;
         public InputAction @TriggerLeft => m_Wrapper.m_Player_TriggerLeft;
         public InputAction @TriggerRight => m_Wrapper.m_Player_TriggerRight;
+        public InputAction @Start => m_Wrapper.m_Player_Start;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -662,6 +684,9 @@ public class Controls : IInputActionCollection, IDisposable
                 TriggerRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerRight;
                 TriggerRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerRight;
                 TriggerRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTriggerRight;
+                Start.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                Start.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                Start.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -690,6 +715,9 @@ public class Controls : IInputActionCollection, IDisposable
                 TriggerRight.started += instance.OnTriggerRight;
                 TriggerRight.performed += instance.OnTriggerRight;
                 TriggerRight.canceled += instance.OnTriggerRight;
+                Start.started += instance.OnStart;
+                Start.performed += instance.OnStart;
+                Start.canceled += instance.OnStart;
             }
         }
     }
@@ -817,6 +845,7 @@ public class Controls : IInputActionCollection, IDisposable
         void OnExitToMenu(InputAction.CallbackContext context);
         void OnTriggerLeft(InputAction.CallbackContext context);
         void OnTriggerRight(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
