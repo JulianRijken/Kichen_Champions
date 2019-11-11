@@ -44,6 +44,7 @@ public class STMInput : MonoBehaviour
 
     private void OnLeftTrigger(InputAction.CallbackContext context)
     {
+        Debug.Log("B");
         if (context.performed && !Left && !done)
         {
             Debug.Log("LeftTrigger");
@@ -57,6 +58,7 @@ public class STMInput : MonoBehaviour
 
     private void OnRightTrigger(InputAction.CallbackContext context)
     {
+        Debug.Log("A");
         if (context.performed && !Right && !done)
         {
             Debug.Log("RightTrigger");
