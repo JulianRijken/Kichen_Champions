@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7707208194814675557}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.17, y: 0.88, z: 0}
+  m_LocalPosition: {x: 2.17, y: 1.04, z: 0}
   m_LocalScale: {x: 1.6666665, y: 1.6666665, z: 1.6666665}
   m_Children: []
   m_Father: {fileID: 7707208195552807361}
@@ -115,10 +115,11 @@ MonoBehaviour:
   m_tape: {fileID: 7707208195664594736}
   m_cutTape: {fileID: 2676043804409232747, guid: 09c360749188eb448ae4a7b84ba5904c,
     type: 3}
-  m_randomLength: {x: 2, y: 4}
-  m_tapeSpeed: 3
+  m_randomLength: {x: 1, y: 4}
+  m_tapeSpeed: 5
   m_tapePauseTime: 0.5
-  m_goodCutRange: 0.5
+  m_goodCutRange: 0.25
+  m_cutsToWin: 6
 --- !u!95 &7707208194977649489
 Animator:
   serializedVersion: 3

@@ -18,6 +18,7 @@ public class CutTheTapePlayer : MonoBehaviour
     [SerializeField] private float m_tapeSpeed;
     [SerializeField] private float m_tapePauseTime;
     [SerializeField] private float m_goodCutRange;
+    [SerializeField] private int m_cutsToWin;
 
     private float m_hasToCutLength;
     private bool m_canMove;
@@ -100,13 +101,24 @@ public class CutTheTapePlayer : MonoBehaviour
         Debug.Log("Cut Length: " + cutLength);
         Debug.Log("hasToCut Length: " + m_hasToCutLength);
         bool goodCut;
-        if (cutLength >= m_hasToCutLength - m_goodCutRange && cutLength <= m_hasToCutLength + m_goodCutRange )
+        if (cutLength >= m_hasToCutLength - m_goodCutRange && cutLength <= m_hasToCutLength + m_goodCutRange)
+        {
             goodCut = true;
-        else
-            goodCut = false;
+            m_goodCuts++;
 
+            if (m_goodCuts >= m_cutsToWin)
+            {
+                m_isDone = true;
+                MiniGameManager.SetPlayerDone(m_player);
+            }
+        }
+        else
+        {
+            goodCut = false;
+        }
 
         m_tape.transform.position += Vector3.up * cutLength;
+
 
         Vector3 spawnPos = m_cutPoint.transform.position + Vector3.down * cutLength / 2;
         spawnPos.x = m_tape.position.x;

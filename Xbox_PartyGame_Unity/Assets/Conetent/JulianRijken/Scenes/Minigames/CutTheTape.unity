@@ -1195,6 +1195,11 @@ PrefabInstance:
       propertyPath: m_playerCount
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 749359011983995753, guid: e5e05064928047a4c9909eb084cf8939,
+        type: 3}
+      propertyPath: m_minigameTime
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e05064928047a4c9909eb084cf8939, type: 3}
 --- !u!1 &1902535781

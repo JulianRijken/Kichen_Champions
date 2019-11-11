@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Conetent/JulianRijken/Scenes/Minigames/TapeTheHole.unity
     guid: e74bffef76cfe3d4d8d96238bd33b511
+  - enabled: 1
+    path: Assets/Conetent/JulianRijken/Scenes/Minigames/CutTheTape.unity
+    guid: f60222d8c0d5a9545a363199b4788ae5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 382a97c429390ff4994cc841339a2a6d,
       type: 2}
