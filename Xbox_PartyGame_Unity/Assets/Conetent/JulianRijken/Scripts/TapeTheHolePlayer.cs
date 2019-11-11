@@ -95,12 +95,16 @@ public class TapeTheHolePlayer : MonoBehaviour
 
     public void StickTape()
     {
+
+        bool missed = true;
         for (int i = 0; i < m_holes.Length; i++)
         {
             float distance = Vector2.Distance(m_tape.position, m_holes[i].transform.position);
             if (distance < m_fixDistance && !m_holes[i].isFixed)
             {
                 m_holes[i].Fix();
+                missed = false;
+
                 m_holesFixed++;
                 if (m_holesFixed >= m_holeCount)
                 {
@@ -111,6 +115,9 @@ public class TapeTheHolePlayer : MonoBehaviour
 
 
         }
+
+        if(missed)
+            Instantiate(m_missedPrefab, m_tape.position, Quaternion.identity);
 
         m_tape.transform.position = m_tapeStartPos;
 
