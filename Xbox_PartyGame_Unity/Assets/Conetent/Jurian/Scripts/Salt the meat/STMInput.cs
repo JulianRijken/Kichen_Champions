@@ -9,11 +9,14 @@ public class STMInput : MonoBehaviour
     [SerializeField] private int m_player;
     [SerializeField] private GameObject saltBottle;
     [SerializeField] private ParticleSystem Salt;
+    [SerializeField] private AnimationCurve moveCurve;
 
-    private Transform saltAnchor;
     private int Points;
     private bool Left, Right;
     private bool done;
+    private float leftProgress;
+    private float rightProgress;
+    private Vector3 startPos;
 
     private float LastInputDelta, Delta;
 
@@ -35,8 +38,11 @@ public class STMInput : MonoBehaviour
 
     private void OnLeftTrigger(InputAction.CallbackContext context)
     {
+        leftProgress = context.ReadValue<float>();
+
         if (context.performed && !Left && !done)
         {
+
             Left = true;
             Right = false;
             Points += 1;
@@ -47,6 +53,8 @@ public class STMInput : MonoBehaviour
 
     private void OnRightTrigger(InputAction.CallbackContext context)
     {
+        rightProgress = context.ReadValue<float>();
+
         if (context.performed && !Right && !done)
         {
             Right = true;
@@ -65,18 +73,29 @@ public class STMInput : MonoBehaviour
             PlayerInputCenter.PlayerInputEvents[m_player].OnRightTrigger += OnRightTrigger;
         }
 
-        StartCoroutine(Move());
+        //StartCoroutine(Move());
         
-        saltAnchor = saltBottle.transform.Find("Emiter pos");
         Left = false;
         Right = true;
+        startPos = saltBottle.transform.position;
         Salt.Stop();
 
     }
 
     private void Update()
     {
-        Salt.gameObject.transform.position = saltAnchor.transform.position;
+
+        float progress = 1;
+        if (!done)
+        {
+            progress -= leftProgress;
+            progress += rightProgress;
+        }
+
+        Vector3 newPos = Vector3.zero;
+        newPos.x = moveCurve.Evaluate(progress / 3);
+        saltBottle.transform.position = startPos + newPos;
+
 
         if (Points == 120 && !done)
         {
