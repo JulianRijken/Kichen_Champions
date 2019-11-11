@@ -196,6 +196,44 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5bad13df-9b35-4541-84f1-92a18a02d9e1
     m_ActionName: Player/Button West[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 41b0e420-94e6-47fe-b12e-0cfe288228de
+    m_ActionName: Player/Exit To Menu[/XInputControllerWindows/start,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8771227218899270275}
+        m_MethodName: FireLeftTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b877a5cc-b11a-4150-8e7c-a654d8a8c43c
+    m_ActionName: Player/Trigger Left[/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8771227218899270275}
+        m_MethodName: FireRightTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 83b736a5-a034-4ddf-9229-2de5c32c56c4
+    m_ActionName: Player/Trigger Right[/XInputControllerWindows/rightTrigger,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 45f7090d-6a81-4adb-b43a-ed63108619d2
+    m_ActionName: Player/Start[/XInputControllerWindows/start,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: d38a3edb-569e-4d30-aadf-bce8b1a1ccf1

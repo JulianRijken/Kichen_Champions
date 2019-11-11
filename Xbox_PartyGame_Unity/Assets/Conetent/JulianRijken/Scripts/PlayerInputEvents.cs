@@ -49,7 +49,6 @@ namespace Julian.InputSystem
         {
             OnLeftTrigger?.Invoke(context);
         }
-
         public delegate void LeftTriggerAction(InputAction.CallbackContext context);
         public event LeftTriggerAction OnLeftTrigger;
 
@@ -57,7 +56,6 @@ namespace Julian.InputSystem
         {
             OnRightTrigger?.Invoke(context);
         }
-
         public delegate void RightTriggerAction(InputAction.CallbackContext context);
         public event RightTriggerAction OnRightTrigger;
 

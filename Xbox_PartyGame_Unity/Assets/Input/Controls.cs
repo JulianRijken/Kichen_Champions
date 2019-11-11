@@ -68,7 +68,7 @@ public class Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Trigger Left"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b877a5cc-b11a-4150-8e7c-a654d8a8c43c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -76,7 +76,7 @@ public class Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Trigger Right"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""83b736a5-a034-4ddf-9229-2de5c32c56c4"",
                     ""expectedControlType"": """",
                     ""processors"": """",

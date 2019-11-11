@@ -72,6 +72,12 @@ public class STMInput : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerInputCenter.PlayerExists(m_player))
+        {
+            PlayerInputCenter.PlayerInputEvents[m_player].OnLeftTrigger += OnLeftTrigger;
+            PlayerInputCenter.PlayerInputEvents[m_player].OnRightTrigger += OnRightTrigger;
+        }
+
         StartCoroutine(Move());
         
         saltAnchor = saltBottle.transform.Find("Emiter pos");
@@ -79,11 +85,6 @@ public class STMInput : MonoBehaviour
         Right = true;
         Salt.Stop();
 
-        if (PlayerInputCenter.PlayerExists(m_player))
-        {
-            PlayerInputCenter.PlayerInputEvents[m_player].OnLeftTrigger += OnLeftTrigger;
-            PlayerInputCenter.PlayerInputEvents[m_player].OnRightTrigger += OnRightTrigger;
-        }
     }
 
     private void Update()
