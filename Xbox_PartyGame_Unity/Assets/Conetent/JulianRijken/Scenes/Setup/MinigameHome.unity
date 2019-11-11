@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2843,7 +2843,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4ca0bf0e5cd8db64b9f4ebe22265b8e4, type: 3}
   - {fileID: 21300000, guid: 5238c7a1fac2ad14294e49125b8f1c36, type: 3}
   - {fileID: 21300000, guid: c99fee0415396154d89f7d4c492876f1, type: 3}
-  - {fileID: 21300000, guid: d9c0df76aad913b438c0a8cefc6239f6, type: 3}
+  - {fileID: 21300000, guid: 6f38e081f6f6bf44db3ced2053881fe3, type: 3}
   m_gameSpriteImage: {fileID: 1546661759}
   tickClip: {fileID: 8300000, guid: 63f3660ad62271b44a9005eb092b26f5, type: 3}
   m_tickSource: {fileID: 1384005588}
