@@ -19,6 +19,8 @@ public class CutTheTapePlayer : MonoBehaviour
     [SerializeField] private float m_tapePauseTime;
     [SerializeField] private float m_goodCutRange;
     [SerializeField] private int m_cutsToWin;
+    [SerializeField] private Color m_goodColor;
+    [SerializeField] private Color m_badColor;
 
     private float m_hasToCutLength;
     private bool m_canMove;
@@ -128,9 +130,9 @@ public class CutTheTapePlayer : MonoBehaviour
         if (spriteRenderer != null)
         {
             if (goodCut)
-                spriteRenderer.color = Color.green;
+                spriteRenderer.color = m_goodColor;
             else
-                spriteRenderer.color = Color.red;
+                spriteRenderer.color = m_badColor;
         }
 
         Vector3 cutTapeScale = m_tape.transform.localScale;

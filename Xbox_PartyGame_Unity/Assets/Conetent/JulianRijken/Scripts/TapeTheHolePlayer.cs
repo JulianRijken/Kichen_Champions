@@ -13,6 +13,7 @@ public class TapeTheHolePlayer : MonoBehaviour
     [SerializeField] private int m_holeCount;
     [SerializeField] private float m_fixDistance;
     [SerializeField] private GameObject m_holesGroup;
+    [SerializeField] private GameObject m_missedPrefab;
 
     private TapeHole[] m_holes = new TapeHole[0];
     private Vector2 m_MovementInput;
@@ -107,6 +108,7 @@ public class TapeTheHolePlayer : MonoBehaviour
                     m_tape.gameObject.SetActive(false);
                 }
             }
+
 
         }
 
