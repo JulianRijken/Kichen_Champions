@@ -13,8 +13,9 @@ public class STMInput : MonoBehaviour
     private Transform saltAnchor;
     private int Points;
     private bool Left, Right;
-    private bool Cancel;
     private bool done;
+
+    private float LastInputDelta, Delta;
 
     IEnumerator Move()
     {
@@ -32,41 +33,27 @@ public class STMInput : MonoBehaviour
             StartCoroutine(Move());
     }
 
-    IEnumerator EnableSalt()
-    {
-        Salt.Play();
-        if (Cancel) { Cancel = false; yield break; }
-        yield return new WaitForSeconds(.2f);
-        if (Cancel) { Cancel = false; yield break; }
-        Salt.Stop();
-
-    }
-
     private void OnLeftTrigger(InputAction.CallbackContext context)
     {
-        Debug.Log("B");
         if (context.performed && !Left && !done)
         {
-            Debug.Log("LeftTrigger");
             Left = true;
             Right = false;
             Points += 1;
-            StartCoroutine(EnableSalt());
-            Cancel = true;
+            LastInputDelta = Delta;
+            Salt.Play();
         }
     }
 
     private void OnRightTrigger(InputAction.CallbackContext context)
     {
-        Debug.Log("A");
         if (context.performed && !Right && !done)
         {
-            Debug.Log("RightTrigger");
             Right = true;
             Left = false;
             Points += 1;
-            StartCoroutine(EnableSalt());
-            Cancel = true;
+            LastInputDelta = Delta;
+            Salt.Play();
         }
     }
 
@@ -91,10 +78,17 @@ public class STMInput : MonoBehaviour
     {
         Salt.gameObject.transform.position = saltAnchor.transform.position;
 
-        if (Points == 60 && !done)
+        if (Points == 120 && !done)
         {
             done = true;
             MiniGameManager.SetPlayerDone(m_player);
+        }
+
+        Delta += Time.deltaTime;
+
+        if (Delta - LastInputDelta > .5f)
+        {
+            Salt.Stop(); 
         }
     }
 

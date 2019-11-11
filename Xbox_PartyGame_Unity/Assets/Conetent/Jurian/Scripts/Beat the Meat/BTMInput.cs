@@ -17,6 +17,8 @@ public class BTMInput : MonoBehaviour
     private bool cancel;
     private bool done;
 
+    private Animator Controller;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +28,11 @@ public class BTMInput : MonoBehaviour
     }
     IEnumerator HammerIdle()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
-            m_hammer.transform.localRotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -105), 1f);
-            m_hammer.transform.localPosition = Vector3.Lerp(position.localPosition, new Vector3(-42.5f, -28,0), 1f);
-            yield return new WaitForSeconds(.005f);
+            m_hammer.transform.localRotation = Quaternion.Slerp(m_hammer.transform.localRotation, Quaternion.Euler(0, 0, -110), Time.deltaTime * 10f);
+            m_hammer.transform.localPosition = Vector3.Lerp(m_hammer.transform.localPosition, position.localPosition, Time.deltaTime * 10f);
+            yield return new WaitForSeconds(.01f);
         }
     }
     IEnumerator Hammer_movement()
@@ -38,7 +40,7 @@ public class BTMInput : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             cancel = true;
-            m_hammer.transform.rotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, 0), m_tick);
+            m_hammer.transform.localRotation = Quaternion.Slerp(m_hammer.transform.localRotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * m_tick);
             yield return new WaitForSeconds(.005f);
         }
         StartCoroutine(Meat_movement());
@@ -46,7 +48,7 @@ public class BTMInput : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             if (cancel) {cancel = false; break;}
-            m_hammer.transform.rotation = Quaternion.Lerp(m_hammer.transform.rotation, Quaternion.Euler(0, 0, -40), m_tick);
+            m_hammer.transform.localRotation = Quaternion.Slerp(m_hammer.transform.localRotation, Quaternion.Euler(0, 0, -40), Time.deltaTime *  m_tick);
             yield return new WaitForSeconds(.005f);
         }
     }
@@ -54,7 +56,7 @@ public class BTMInput : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(1.3f,1, 1), m_tick);
+            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(1.3f,1, 1), Time.deltaTime * m_tick);
             yield return new WaitForSeconds(.005f);
         }
         for (int i = 0; i < 10; i++)
@@ -82,7 +84,7 @@ public class BTMInput : MonoBehaviour
 
     private void Update()
     {
-        if (m_beats >= 50 && !done)
+        if (m_beats == 10 && !done)
         {
             done = true;
             StartCoroutine(HammerIdle());
