@@ -20,9 +20,15 @@ public class SliceItInput : MonoBehaviour
     private int slices;
     private bool AddPoint;
     private bool debounce;
+
+    private Vector3[] Directions;
     // Start is called before the first frame update
     void Start()
     {
+        Directions = new Vector3[2];
+        Directions[0] = new Vector3(1, 1, 0);
+        Directions[1] = new Vector3(-1, 1, 0);
+
         scale = 2.5f;
         if (PlayerInputCenter.PlayerExists(m_player))
         {
@@ -75,7 +81,10 @@ public class SliceItInput : MonoBehaviour
         {
             GameObject clone = Instantiate(cucumberclone);
             clone.transform.position = spawnpoint.position;
-            
+
+            int random = Random.Range(0, 2);
+            int multiplier = Random.Range(50, 500);
+            clone.GetComponent<Rigidbody2D>().AddForce(Directions[random]*multiplier);
             slices += 1;
             AddPoint = false;
             StartCoroutine(destroyClone(clone));
