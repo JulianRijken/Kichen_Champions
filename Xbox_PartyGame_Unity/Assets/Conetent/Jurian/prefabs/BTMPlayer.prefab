@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6080494449384124651}
   - component: {fileID: 6080494449384124652}
-  - component: {fileID: 4707498198378315254}
+  - component: {fileID: 4263092762487395286}
   m_Layer: 0
   m_Name: Beat-the-meat-assets_0
   m_TagString: Untagged
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4707498198378315254
+--- !u!95 &4263092762487395286
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ Animator:
   m_GameObject: {fileID: 6080494449384124650}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ea0814d3a72d1c489f6fa7a5fd18158, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

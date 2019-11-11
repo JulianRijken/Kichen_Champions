@@ -17,7 +17,7 @@ public class BTMInput : MonoBehaviour
     private bool cancel;
     private bool done;
 
-    private Animator Controller;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class BTMInput : MonoBehaviour
         if (PlayerInputCenter.PlayerExists(m_player))
             PlayerInputCenter.PlayerInputEvents[m_player].OnButtonSouth += buttonSouthPressed;
 
+        anim = m_meat.GetComponent<Animator>();
     }
     IEnumerator HammerIdle()
     {
@@ -37,31 +38,19 @@ public class BTMInput : MonoBehaviour
     }
     IEnumerator Hammer_movement()
     {
+        anim.StopPlayback();
         for (int i = 0; i < 10; i++)
         {
             cancel = true;
             m_hammer.transform.localRotation = Quaternion.Slerp(m_hammer.transform.localRotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * m_tick);
             yield return new WaitForSeconds(.005f);
         }
-        StartCoroutine(Meat_movement());
+        anim.Play("Slammed");
         cancel = false;
         for (int i = 0; i < 10; i++)
         {
             if (cancel) {cancel = false; break;}
             m_hammer.transform.localRotation = Quaternion.Slerp(m_hammer.transform.localRotation, Quaternion.Euler(0, 0, -40), Time.deltaTime *  m_tick);
-            yield return new WaitForSeconds(.005f);
-        }
-    }
-    IEnumerator Meat_movement()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(1.3f,1, 1), Time.deltaTime * m_tick);
-            yield return new WaitForSeconds(.005f);
-        }
-        for (int i = 0; i < 10; i++)
-        {
-            m_meat.transform.localScale = Vector3.Lerp(m_hammer.transform.localScale, new Vector3(1, 1, 1), m_tick); 
             yield return new WaitForSeconds(.005f);
         }
     }
@@ -84,12 +73,13 @@ public class BTMInput : MonoBehaviour
 
     private void Update()
     {
-        if (m_beats == 10 && !done)
+        if (m_beats == 60 && !done)
         {
             done = true;
             StartCoroutine(HammerIdle());
             MiniGameManager.SetPlayerDone(m_player);
         }
+
     }
     
 }
