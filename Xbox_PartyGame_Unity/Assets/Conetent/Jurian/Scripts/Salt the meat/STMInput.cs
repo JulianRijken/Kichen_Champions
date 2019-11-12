@@ -10,6 +10,7 @@ public class STMInput : MonoBehaviour
     [SerializeField] private GameObject saltBottle;
     [SerializeField] private ParticleSystem Salt;
     [SerializeField] private AnimationCurve moveCurve;
+    [SerializeField] private Animator animator;
 
     private int Points;
     private bool Left, Right;
@@ -17,10 +18,11 @@ public class STMInput : MonoBehaviour
     private float leftProgress;
     private float rightProgress;
     private Vector3 startPos;
+    private Vector3 bottlePos;
 
     private float LastInputDelta, Delta;
 
-    IEnumerator Move()
+    private IEnumerator Move()
     {
         for (int i = 0; i < 100; ++i)
         {
@@ -93,13 +95,15 @@ public class STMInput : MonoBehaviour
         }
 
         Vector3 newPos = Vector3.zero;
-        newPos.x = moveCurve.Evaluate(progress / 3);
-        saltBottle.transform.position = startPos + newPos;
+        newPos.x = moveCurve.Evaluate(progress / 3) * 1.5f;
+        bottlePos = startPos + newPos;
 
+        saltBottle.transform.position = Vector3.Lerp(saltBottle.transform.position, bottlePos, Time.deltaTime * 15f);
 
         if (Points == 120 && !done)
         {
             done = true;
+            animator.SetTrigger("Done");
             MiniGameManager.SetPlayerDone(m_player);
         }
 

@@ -393,7 +393,7 @@ MonoBehaviour:
   m_moveSpeed: 2
   m_noiseSpeed: 4
   m_holeCount: 3
-  m_fixDistance: 0.3
+  m_fixDistance: 0.6
   m_holesGroup: {fileID: 702198635717173663}
   m_missedPrefab: {fileID: 7490026193663955793, guid: 126f0a91c4120cc40ad4e952b372f620,
     type: 3}
